@@ -1,5 +1,5 @@
 var SlideModel = Backbone.Model.extend({
-  default: {
+  defaults: {
     type: 'notes',
     title: ''
   }

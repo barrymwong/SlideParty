@@ -7,8 +7,16 @@ var AppView = Backbone.View.extend({
       {title: 'What Giraffes Eat'}
     ];
 
-    new SlidesView({
+    this.slidesView = new SlidesView({
       collection: new SlidesCollection(data)
     });
+
+    this.render();
+  },
+
+  render: function() {
+    this.$el.append(this.slidesView.render().el);
+
+    return this;
   }
 });

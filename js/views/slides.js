@@ -1,18 +1,14 @@
 var SlidesView = Backbone.View.extend({
-  el: $('.slides'),
-
-  initialize: function() {
-    this.renderAll();
-  },
-
-  renderAll: function() {
-    this.$el.empty();
-    this.collection.each(this.render, this);
-  },
+  className: 'slides',
 
   render: function(slide) {
-    var slideView = new SlideView({model: slide});
-    this.$el.append(slideView.render().el);
+    this.$el.empty();
+
+    this.collection.each(function(slide){
+      var slideView = new SlideView({model: slide});
+      this.$el.append(slideView.render().el);
+    }, this);
+
     return this;
   }
 });
