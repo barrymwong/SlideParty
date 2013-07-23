@@ -1,3 +1,3 @@
-var SlidesCollections = Backbone.Collections.extend({
-	model: SlideModel
+var SlidesCollection = Backbone.Collection.extend({
+  model: SlideModel
 });
