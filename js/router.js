@@ -5,11 +5,14 @@ var MainRouter = Backbone.Router.extend({
   },
 
   home: function() {
-    // App.Vent.trigger('init');
+    App.Vent.trigger('init');
   },
 
   showSlides: function(slideIndex) {
-    // App.Vent.trigger('');
+    App.Vent.trigger('changeSlide', {
+      slideIndex: slideIndex,
+      direction: 'next'
+    });
   }
 
 });
