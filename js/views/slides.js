@@ -1,7 +1,7 @@
 var SlidesView = Backbone.View.extend({
   className: 'slides',
 
-  render: function(slide) {
+  render: function() {
     this.$el.empty();
 
     this.collection.each(function(slide){

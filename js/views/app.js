@@ -12,6 +12,9 @@ var AppView = Backbone.View.extend({
     });
 
     this.render();
+
+    App.mainRouter = new MainRouter();
+    Backbone.history.start();
   },
 
   render: function() {
