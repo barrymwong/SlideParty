@@ -15,7 +15,9 @@ var SlidesView = Backbone.View.extend({
     var newSlide,
         slide = this.$el.children();
 
-    if(this.currentSlideIndex > 0 ) {
+        console.log(this.currentSlideIndex, this.collection.length);
+
+    if(this.currentSlideIndex > 0) {
       if(options.slideIndex) {
         this.currentSlideIndex = +options.slideIndex;
       } else {
@@ -31,12 +33,12 @@ var SlidesView = Backbone.View.extend({
     var slide = this.$el.children(), 
         go = 0;
 
-      go = dir === 'next' ? this.currentSlideIndex++ : this.currentSlideIndex--;
+    go = dir === 'next' ? this.currentSlideIndex++ : this.currentSlideIndex--;
 
     // boundries
-    go = go < 1 ? 1 : go > this.collection.length ? this.collection.length : go;
+    //go = go < 1 ? 1 : go > this.collection.length ? this.collection.length : go;
 
-    console.log(go);
+    console.log('go -->', go, this.currentSlideIndex);
 
     App.mainRouter.navigate('slides/' + go);
     slide.hide();

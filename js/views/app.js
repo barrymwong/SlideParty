@@ -3,8 +3,10 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     var data = [
+      {title: 'My Presentation'},
       {title: 'About Giraffes'},
-      {title: 'What Giraffes Eat'}
+      {title: 'What Do Giraffes Eat?'},
+      {title: 'Where Do Giraffes Live?'}
     ];
 
     this.slidesView = new SlidesView({
