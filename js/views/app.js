@@ -3,10 +3,10 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     var data = [
-      {title: 'My Presentation'},
-      {title: 'About Giraffes'},
-      {title: 'What Do Giraffes Eat?'},
-      {title: 'Where Do Giraffes Live?'}
+      {title: '1. My Presentation'},
+      {title: '2. About Giraffes'},
+      {title: '3. What Do Giraffes Eat?'},
+      {title: '4. Where Do Giraffes Live?'}
     ];
 
     this.slidesView = new SlidesView({
@@ -17,7 +17,6 @@ var AppView = Backbone.View.extend({
 
     App.mainRouter = new MainRouter();
     Backbone.history.start();
-    App.mainRouter.navigate('slides/' + 1);
   },
 
   events: {

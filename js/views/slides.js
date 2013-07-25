@@ -5,6 +5,7 @@ var SlidesView = Backbone.View.extend({
     this.currentSlideIndex = 1;
     App.Vent.on('init', this.hideAllButFirst, this);
     App.Vent.on('changeSlide', this.changeSlide, this);
+    this.transitionSpeed = 1000;
   },
 
   hideAllButFirst: function() {
@@ -13,36 +14,50 @@ var SlidesView = Backbone.View.extend({
 
   changeSlide: function(options) {
     var newSlide,
-        slide = this.$el.children();
+        slides = this.$el.children(),
+        that = this;
 
-        console.log(this.currentSlideIndex, this.collection.length);
+    if(options.slideIndex) {
+      this.currentSlideIndex = +options.slideIndex;
 
-    if(this.currentSlideIndex > 0) {
-      if(options.slideIndex) {
-        this.currentSlideIndex = +options.slideIndex;
-      } else {
-        this.nextSlide(options.direction);
-      }
+      newSlide = slides.eq(this.currentSlideIndex - 1);
 
-      slide.hide();
-      slide.eq(this.currentSlideIndex - 1).show();
+      slides.filter(':visible')
+        .css('position', 'absolute')
+        .animate({
+          left: options.direction === 'next' ? '-100%' : '100%',
+          opacity: 'hide'
+        }, this.transitionSpeed, function() {
+
+          $(this).css({left: 0});
+
+
+      });
+
+      newSlide
+        .css({
+          position: 'absolute',
+          left: options.direction === 'next' ? '100%' : '-100%'
+        }).animate({
+          left: 0,
+          opacity: 'show'
+        }, that.transitionSpeed);
+
+
+
+      App.mainRouter.navigate('/slides/' + this.currentSlideIndex);
+
+    } else {
+      this.setCurrentSlideIndex(options.direction);
     }
   },
 
-  nextSlide: function(dir) {
-    var slide = this.$el.children(), 
-        go = 0;
+  setCurrentSlideIndex: function(dir) {
+    var newSlide,
+        slides = this.$el.children(),
+        go = dir === 'next' ? ++this.currentSlideIndex : --this.currentSlideIndex;
 
-    go = dir === 'next' ? this.currentSlideIndex++ : this.currentSlideIndex--;
-
-    // boundries
-    //go = go < 1 ? 1 : go > this.collection.length ? this.collection.length : go;
-
-    console.log('go -->', go, this.currentSlideIndex);
-
-    App.mainRouter.navigate('slides/' + go);
-    slide.hide();
-    slide.eq(go).show();
+    this.changeSlide({direction: dir, slideIndex: go});
   },
 
   render: function() {
