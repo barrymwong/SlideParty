@@ -22,17 +22,15 @@ var SlidesView = Backbone.View.extend({
 
       newSlide = slides.eq(this.currentSlideIndex - 1);
 
-      slides.filter(':visible')
+      slides
+        .filter(':visible')
         .css('position', 'absolute')
         .animate({
           left: options.direction === 'next' ? '-100%' : '100%',
           opacity: 'hide'
         }, this.transitionSpeed, function() {
-
           $(this).css({left: 0});
-
-
-      });
+        });
 
       newSlide
         .css({
@@ -42,8 +40,6 @@ var SlidesView = Backbone.View.extend({
           left: 0,
           opacity: 'show'
         }, that.transitionSpeed);
-
-
 
       App.mainRouter.navigate('/slides/' + this.currentSlideIndex);
 

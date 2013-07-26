@@ -2,15 +2,8 @@ var AppView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    var data = [
-      {title: '1. My Presentation'},
-      {title: '2. About Giraffes'},
-      {title: '3. What Do Giraffes Eat?'},
-      {title: '4. Where Do Giraffes Live?'}
-    ];
-
     this.slidesView = new SlidesView({
-      collection: new SlidesCollection(data)
+      collection: new SlidesCollection(window.slides)
     });
 
     this.render();
