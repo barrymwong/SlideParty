@@ -1,12 +1,15 @@
 var express = require('express'),
   app = express(),
   server = require('http').createServer(app),
-  io = require('socket.io').listen(server);
+  io = require('socket.io').listen(server),
+  path = require('path');
+  
 
 // config for session
 var MemoryStore = express.session.MemoryStore;
 var sessionStore = new MemoryStore();
 app.configure(function() {
+  app.use(express.static(path.join(__dirname + '/public')));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({
@@ -33,9 +36,8 @@ app.get('/', function(req, res) {
   var data = '';
   if(req.method === 'GET') {
     io.sockets.emit('session', req.sessionID);
-    app.use("/css", express.static(__dirname + '/css'));
-    app.use("/css", express.static(__dirname + '/css'));
-    app.use("/", express.static(__dirname + '/'));
+
+    
 
   } else if (req.method === 'POST') {
     req.on('data', function(chunk) {
