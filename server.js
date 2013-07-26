@@ -41,6 +41,9 @@ app.get('/', function(req, res) {
   var data = '';
   if(req.method === 'GET') {
     io.sockets.emit('session', req.sessionID);
+    app.use("/css", express.static(__dirname + '/css'));
+    app.use("/css", express.static(__dirname + '/css'));
+    app.use("/", express.static(__dirname + '/'));
 
   } else if (req.method === 'POST') {
     req.on('data', function(chunk) {
