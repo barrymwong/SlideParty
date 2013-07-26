@@ -14,8 +14,7 @@ var SlidesView = Backbone.View.extend({
 
   changeSlide: function(options) {
     var newSlide,
-        slides = this.$el.children(),
-        that = this;
+        slides = this.$el.children();
 
     if(options.slideIndex) {
       this.currentSlideIndex = +options.slideIndex;
@@ -39,7 +38,7 @@ var SlidesView = Backbone.View.extend({
         }).animate({
           left: 0,
           opacity: 'show'
-        }, that.transitionSpeed);
+        }, this.transitionSpeed);
 
       App.mainRouter.navigate('/slides/' + this.currentSlideIndex);
 

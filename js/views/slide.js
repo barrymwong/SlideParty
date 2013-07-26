@@ -1,10 +1,6 @@
 var SlideView = Backbone.View.extend({
   className: 'slide',
 
-  initialize: function() {
-
-  },
-
   render: function() {
     if(this.model.get('image')) {
       this.renderImage();

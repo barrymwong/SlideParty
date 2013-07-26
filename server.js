@@ -1,4 +1,3 @@
-
 var express = require('express'),
   app = express(),
   server = require('http').createServer(app),
@@ -20,7 +19,6 @@ app.configure(function() {
 });
 
 io.sockets.on('connection', function(socket) {
-
   socket.on('message', function(data) {
     var reply = 'Hello,' + data.name + '! Is this what you said: "' + data.message + '"?';
     io.sockets.emit('messageSuccess', reply);
@@ -29,15 +27,9 @@ io.sockets.on('connection', function(socket) {
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
-
 });
 
-
 app.get('/', function(req, res) {
-
-  // session id
-  console.log('session: ', req.sessionID);
-
   var data = '';
   if(req.method === 'GET') {
     io.sockets.emit('session', req.sessionID);
