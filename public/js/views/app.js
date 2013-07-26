@@ -10,10 +10,13 @@ var AppView = Backbone.View.extend({
 
     App.mainRouter = new MainRouter();
     Backbone.history.start();
+
+
   },
 
   events: {
-    'keyup': 'keyUp'
+    'keyup': 'keyUp',
+    'click .button-slide' : 'nextPrevButtons'
   },
 
   keyUp: function(event) {
@@ -25,8 +28,25 @@ var AppView = Backbone.View.extend({
     }
   },
 
+  nextPrevButtons: function(event) {
+    event.preventDefault();
+
+    App.Vent.trigger('changeSlide', {
+        direction: $(event.target).data('slide')
+    });
+  },
+
+  renderNextPrevButtons: function() {
+    this.$el.append(
+      '<a id="prev" data-slide="prev" class="button-slide" href="#">Prev</a>'+
+      '<a id="next" data-slide="next" class="button-slide" href="#">Next</a>'
+    );
+    return this;
+  },
+
   render: function() {
     this.$el.append(this.slidesView.render().el);
+    this.renderNextPrevButtons();
     return this;
   }
 });

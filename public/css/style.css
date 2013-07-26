@@ -1,1 +1,5 @@
 .slide { width:100%; }
+
+#next, #prev { position:absolute; top:50%; }
+#next { right: 20px; }
+#prev { left: 20px; }

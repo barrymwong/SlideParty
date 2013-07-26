@@ -5,7 +5,7 @@ var SlidesView = Backbone.View.extend({
     this.currentSlideIndex = 1;
     App.Vent.on('init', this.hideAllButFirst, this);
     App.Vent.on('changeSlide', this.changeSlide, this);
-    this.transitionSpeed = 1000;
+    this.transitionSpeed = 400;
   },
 
   hideAllButFirst: function() {
