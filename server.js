@@ -22,6 +22,8 @@ app.configure(function() {
 });
 
 io.sockets.on('connection', function(socket) {
+
+  // server listens for direction
   socket.on('direction', function(data) {
     console.log('direction', data);
     io.sockets.emit('directionSuccess', data);
