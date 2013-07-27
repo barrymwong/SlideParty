@@ -16,9 +16,7 @@ var SlidesView = Backbone.View.extend({
     var newSlide,
         slides = this.$el.children();
 
-    if(options.slideIndex === App.serverListenData) {
-      return;
-    } else if(options.slideIndex) {
+    if(options.slideIndex) {
       this.currentSlideIndex = +options.slideIndex;
 
       newSlide = slides.eq(this.currentSlideIndex - 1);
@@ -55,7 +53,6 @@ var SlidesView = Backbone.View.extend({
         go = dir === 'next' ? ++this.currentSlideIndex : --this.currentSlideIndex;
 
     socket.emit('direction', {direction: dir, slideIndex: go});
-    this.changeSlide({direction: dir, slideIndex: go});
   },
 
   render: function() {
