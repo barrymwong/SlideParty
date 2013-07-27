@@ -11,7 +11,8 @@ var AppView = Backbone.View.extend({
     App.mainRouter = new MainRouter();
     Backbone.history.start();
 
-
+    this.intervalTime = 1000;
+    this.serverListener();
   },
 
   events: {
@@ -28,11 +29,23 @@ var AppView = Backbone.View.extend({
     }
   },
 
+  serverListener: function() {
+    var t = setInterval(function() {
+      if(App.serverListenData !== null) {
+        App.Vent.trigger('changeSlide', {
+          direction: App.serverListenData.direction,
+          slideIndex: App.serverListenData.slideIndex
+        });
+      }
+      App.serverListenData = null;
+    }, this.intervalTime);
+  },
+
   nextPrevButtons: function(event) {
     event.preventDefault();
 
     App.Vent.trigger('changeSlide', {
-        direction: $(event.target).data('slide')
+      direction: $(event.target).data('slide')
     });
   },
 

@@ -22,11 +22,6 @@ app.configure(function() {
 });
 
 io.sockets.on('connection', function(socket) {
-  socket.on('message', function(data) {
-    var reply = 'Hello,' + data.name + '! Is this what you said: "' + data.message + '"?';
-    io.sockets.emit('messageSuccess', reply);
-  });
-
   socket.on('direction', function(data) {
     console.log('direction', data);
     io.sockets.emit('directionSuccess', data);
@@ -38,12 +33,11 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.get('/', function(req, res) {
-  var data = '',
-      sessionID = req.sessionID;
+  var data = '';
+
+  io.sockets.emit('session', req.sessionID);
 
   if(req.method === 'GET') {
-    io.sockets.emit('session', sessionID);
-    console.log(sessionID);
 
   } else if (req.method === 'POST') {
     req.on('data', function(chunk) {

@@ -16,14 +16,12 @@ var SlidesView = Backbone.View.extend({
     var newSlide,
         slides = this.$el.children();
 
-    if(options.slideIndex) {
+    if(options.slideIndex === App.serverListenData) {
+      return;
+    } else if(options.slideIndex) {
       this.currentSlideIndex = +options.slideIndex;
 
       newSlide = slides.eq(this.currentSlideIndex - 1);
-
-      socket.emit('direction', {
-        direction: this.currentSlideIndex
-      });
 
       slides
         .filter(':visible')
@@ -46,7 +44,6 @@ var SlidesView = Backbone.View.extend({
 
       App.mainRouter.navigate('/slides/' + this.currentSlideIndex);
 
-
     } else {
       this.setCurrentSlideIndex(options.direction);
     }
@@ -57,6 +54,7 @@ var SlidesView = Backbone.View.extend({
         slides = this.$el.children(),
         go = dir === 'next' ? ++this.currentSlideIndex : --this.currentSlideIndex;
 
+    socket.emit('direction', {direction: dir, slideIndex: go});
     this.changeSlide({direction: dir, slideIndex: go});
   },
 
