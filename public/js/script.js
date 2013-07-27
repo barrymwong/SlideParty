@@ -7,7 +7,6 @@ window.App = {
     {image: 'https://i.chzbgr.com/maxW500/7670554368/hA827CEEC/'},
     {title: 'Hello Wrrld!!!'}, 
     {title: 'Errmergerrd!'}
-  ],
-  serverListenData : null,
+  ]
 };
 var appView = new AppView();

@@ -6,6 +6,10 @@ The presenter can share a poll with the audience
 The audience uses their mobile devices to enter feedback
 Data is collected and appears real-time on the slide presentation
 
+Socket.io
+==================
+Listens for changes and emits a callback between server-client and client-server.
+
 Server-Client interaction:
 ==================
 1. Server waits for clients to emit 'direction' (server.js)
@@ -13,6 +17,5 @@ Server-Client interaction:
 3. Server takes data and emits it to all clients via 'directionSuccess'
 4. Clients wait for 'directionSuccess' in client.js
 5. When Clients receive 'directionSuccess' data, trigger changeSlide in slides.js
-
 
 

@@ -22,7 +22,6 @@ app.configure(function() {
 });
 
 io.sockets.on('connection', function(socket) {
-
   // server listens for direction
   socket.on('direction', function(data) {
     console.log('direction', data);
@@ -32,26 +31,6 @@ io.sockets.on('connection', function(socket) {
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
-});
-
-app.get('/', function(req, res) {
-  var data = '';
-
-  io.sockets.emit('session', req.sessionID);
-
-  if(req.method === 'GET') {
-
-  } else if (req.method === 'POST') {
-    req.on('data', function(chunk) {
-      console.log(chunk);
-      data += chunk;
-    });
-    req.on('end', function() {
-      socket.emit('foo message', data);
-    });
-  }
-  console.log('-->', req.method);
-  res.sendfile(__dirname + '/index.html');
 });
 
 io.sockets.on('disconnect', function() {
