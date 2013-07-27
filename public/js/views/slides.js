@@ -21,6 +21,10 @@ var SlidesView = Backbone.View.extend({
 
       newSlide = slides.eq(this.currentSlideIndex - 1);
 
+      socket.emit('direction', {
+        direction: this.currentSlideIndex
+      });
+
       slides
         .filter(':visible')
         .css('position', 'absolute')
@@ -41,6 +45,7 @@ var SlidesView = Backbone.View.extend({
         }, this.transitionSpeed);
 
       App.mainRouter.navigate('/slides/' + this.currentSlideIndex);
+
 
     } else {
       this.setCurrentSlideIndex(options.direction);

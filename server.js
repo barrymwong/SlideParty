@@ -27,17 +27,23 @@ io.sockets.on('connection', function(socket) {
     io.sockets.emit('messageSuccess', reply);
   });
 
+  socket.on('direction', function(data) {
+    console.log('direction', data);
+    io.sockets.emit('directionSuccess', data);
+  });
+
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
 });
 
 app.get('/', function(req, res) {
-  var data = '';
-  if(req.method === 'GET') {
-    io.sockets.emit('session', req.sessionID);
+  var data = '',
+      sessionID = req.sessionID;
 
-    
+  if(req.method === 'GET') {
+    io.sockets.emit('session', sessionID);
+    console.log(sessionID);
 
   } else if (req.method === 'POST') {
     req.on('data', function(chunk) {

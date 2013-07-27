@@ -1,4 +1,4 @@
-.slide { width:100%; }
+.slide { width:100%; text-align:center; }
 
 #next, #prev { position:absolute; top:50%; }
 #next { right: 20px; }

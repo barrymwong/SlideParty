@@ -3,7 +3,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     this.slidesView = new SlidesView({
-      collection: new SlidesCollection(window.slides)
+      collection: new SlidesCollection(App.slides)
     });
 
     this.render();
