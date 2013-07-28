@@ -2,8 +2,8 @@ var express = require('express'),
   app = express(),
   server = require('http').createServer(app),
   io = require('socket.io').listen(server),
-  path = require('path');
-  
+  path = require('path'),
+  mongo = require('mongodb');
 
 // config for session
 var MemoryStore = express.session.MemoryStore;
@@ -22,6 +22,7 @@ app.configure(function() {
 });
 
 io.sockets.on('connection', function(socket) {
+
   // server listens for direction
   socket.on('direction', function(data) {
     console.log('direction', data);

@@ -6,6 +6,12 @@ The presenter can share a poll with the audience
 The audience uses their mobile devices to enter feedback
 Data is collected and appears real-time on the slide presentation
 
+npm install & requires
+==================
+npm install express
+npm install socket.io
+npm install mongodb
+
 Socket.io
 ==================
 Listens for changes and emits a callback between server-client and client-server.
