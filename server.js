@@ -2,8 +2,32 @@ var express = require('express'),
   app = express(),
   server = require('http').createServer(app),
   io = require('socket.io').listen(server),
-  path = require('path'),
-  mongo = require('mongodb');
+  path = require('path');
+
+  // mongo = require('mongodb'),
+  // Db = mongo.Db,
+  // DbServer = mongo.Server;
+
+  // dbClient = new Db('test', new DbServer('127.0.0.1', 27017), {safe:false});
+
+  // var insertData = function(err, collection) {
+  //   var count = collection.count(function(err, total) {
+  //     return total;
+  //   });
+
+  //   if(0 < count) {
+  //     collection.insert({title: 'My Presentation'});
+  //     collection.insert({image: 'http://barrymwong.com/images/pacific_ave.jpg'});
+  //     collection.insert({image: 'http://mathblag.files.wordpress.com/2011/11/fibonacci_pigeons.jpg'});
+  //     collection.insert({image: 'https://i.chzbgr.com/maxW500/7670554368/hA827CEEC/'});
+  //     collection.insert({title: 'Hello Wrrld!!!'}); 
+  //     collection.insert({title: 'Errmergerrd!'});
+  //   }
+  // };
+
+  // dbClient.open(function(err, pClient) {
+  //   dbClient.collection('test_insert', insertData);
+  // });
 
 // config for session
 var MemoryStore = express.session.MemoryStore;

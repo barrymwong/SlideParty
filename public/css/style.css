@@ -1,5 +1,5 @@
 .slide { width:100%; text-align:center; }
 
-#next, #prev { position:absolute; top:50%; }
+#next, #prev { position:absolute; top:50%; font-size: 30px; color:green; }
 #next { right: 20px; }
 #prev { left: 20px; }
