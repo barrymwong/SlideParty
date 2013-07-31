@@ -6,7 +6,6 @@ var express = require('express')
   , mongodb = require('./mongodb')
   , mongoose = require('./mongoose');
 
-
 // config for session
 var MemoryStore = express.session.MemoryStore;
 var sessionStore = new MemoryStore();
@@ -23,11 +22,16 @@ app.configure(function() {
   app.use(app.router);
 });
 
+
+app.get('/admin', function (req, res) {
+  res.send('admin page');
+}); 
+
 io.sockets.on('connection', function(socket) {
 
   // server listens for direction
   socket.on('direction', function(data) {
-    console.log('direction', data);
+    console.log('direction', mongoose.slides);
     io.sockets.emit('directionSuccess', data);
   });
 

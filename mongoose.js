@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://' + "localhost" + '/test');
 var myDB = mongoose.connection;
@@ -9,7 +9,7 @@ myDB.once('open', function callback () {
   console.log("MY DB Connected with Mongoose");
 });
 
-var slideSchema = new mongoose.Schema(
+exports.slideSchema = new mongoose.Schema(
   {
     image: String,
     title: String
@@ -19,13 +19,27 @@ var slideSchema = new mongoose.Schema(
   }
 );
 
-var Slide = mongoose.model('test_insert2', slideSchema);
+exports.Slide = mongoose.model('test_insert2', exports.slideSchema);
 
-
-var slide = new Slide({title: 'cheeseburger'});
-var slide2 = new Slide({title: 'prime rib'});
-var slide3 = new Slide({title: 'buta kimchee'});
+var slide = new exports.Slide({title: 'cheeseburger'});
+var slide2 = new exports.Slide({title: 'prime rib'});
+var slide3 = new exports.Slide({title: 'buta kimchee'});
 
 slide.save(function(err, slide) {
   slide.title;
+});
+
+slide2.save(function(err, slide) {
+  slide2.title;
+});
+
+slide3.save(function(err, slide) {
+  slide3.title;
+});
+
+exports.Slide.find(function(err, slides) {
+  if(err) {
+    return err;
+  }
+  exports.slides = slides;
 });
