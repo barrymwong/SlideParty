@@ -2,14 +2,20 @@ var AppView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    this.slidesView = new SlidesView({
-      collection: new SlidesCollection(App.slides)
-    });
+    App.Vent.on('appInit', this.appInit, this);
 
-    this.render();
+    socket.emit('init', {direction: 'next', slideIndex: 1});
 
     App.mainRouter = new MainRouter();
     Backbone.history.start();
+  },
+
+  appInit: function(data) {
+    App.slides = data.slideData;
+    this.slidesView = new SlidesView({
+      collection: new SlidesCollection(App.slides)
+    });
+    this.render();
   },
 
   events: {
@@ -36,10 +42,14 @@ var AppView = Backbone.View.extend({
 
   renderNextPrevButtons: function() {
     this.$el.append(
-      '<a id="prev" data-slide="prev" class="button-slide" href="#">Prev</a>'+
+      '<a id="prev" data-slide="prev" class="button-slide" href="#">Prev</a>' +
       '<a id="next" data-slide="next" class="button-slide" href="#">Next</a>'
     );
     return this;
+  },
+
+  getData: function() {
+    socket.emit('direction', {direction: 'next', slideIndex: 1});
   },
 
   render: function() {

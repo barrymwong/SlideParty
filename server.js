@@ -3,8 +3,9 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
   , path = require('path')
-  , mongodb = require('./mongodb')
   , mongoose = require('./mongoose');
+
+var slideData = {};
 
 // config for session
 var MemoryStore = express.session.MemoryStore;
@@ -23,15 +24,32 @@ app.configure(function() {
 });
 
 
+app.get('/', function (req, res) {
+  res.writeHead(200);
+  res.send('admin page');
+  res.end();
+}); 
+
 app.get('/admin', function (req, res) {
   res.send('admin page');
 }); 
 
+mongoose.Slide.find({}, function(err, slides) {
+  if(err) {
+    return err;
+  }
+  slideData = slides;
+});
+
 io.sockets.on('connection', function(socket) {
+  
+  socket.on('init', function(data) {
+    data['slideData'] = slideData;
+    io.sockets.emit('initSuccess', data);
+  });
 
   // server listens for direction
   socket.on('direction', function(data) {
-    console.log('direction', mongoose.slides);
     io.sockets.emit('directionSuccess', data);
   });
 
