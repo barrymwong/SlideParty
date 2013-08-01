@@ -16,11 +16,6 @@ var SlidesView = Backbone.View.extend({
     var newSlide,
         slides = this.$el.children();
 
-    if(options.slideData) {
-      App.slides = options.slideData;
-      this.renderNewSlideData(options.slideData);
-    }
-
     if(options.slideIndex) {
       this.currentSlideIndex = +options.slideIndex;
 
@@ -65,17 +60,6 @@ var SlidesView = Backbone.View.extend({
     if(slideIndex > 0 && slideIndex <= App.slides.length && slideIndex !== lastSlide) {
       socket.emit('direction', {direction: dir, slideIndex: slideIndex});
     }
-  },
-
-  renderNewSlideData: function(array) {
-    _(array).each(function(value, index) {
-      if(App.slides.length < 100) {
-        App.slides.push(array[index]);
-        var slideView = new SlideView({model: new SlideModel( array[index] )});
-        this.$el.append(slideView.render().el);
-      }
-    }, this);
-    return this;
   },
 
   render: function() {

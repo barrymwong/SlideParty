@@ -12,9 +12,11 @@ var AppView = Backbone.View.extend({
 
   appInit: function(data) {
     App.slides = data.slideData;
+    
     this.slidesView = new SlidesView({
       collection: new SlidesCollection(App.slides)
     });
+
     this.render();
   },
 

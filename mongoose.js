@@ -26,12 +26,18 @@ exports.Slide = mongoose.model('test_insert', slideSchema);
 
 exports.Slide.find({}).remove();
 
-_und.each(json.slides, function(value, index) {
-  var slide = new exports.Slide(json.slides[index]);
+exports.Slide.count({}, function(err, count) {
+  if(count === 0) {
+    _und.each(json.slides, function(value, index) {
+      var slide = new exports.Slide(json.slides[index]);
 
-  slide.save(function(err, slide) {
-    for(var key in json.slides[index]) {
-      slide[key] = value;
-    }
-  });
+      slide.save(function(err, slide) {
+        for(var key in json.slides[index]) {
+          slide[key] = value;
+        }
+      });
+    });
+  }
 });
+
+

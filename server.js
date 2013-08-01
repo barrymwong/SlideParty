@@ -34,16 +34,18 @@ app.get('/admin', function (req, res) {
   res.send('admin page');
 }); 
 
-mongoose.Slide.find({}, function(err, slides) {
-  if(err) {
-    return err;
-  }
-  slideData = slides;
-});
+
 
 io.sockets.on('connection', function(socket) {
-  
+
   socket.on('init', function(data) {
+    mongoose.Slide.find({}, function(err, slides) {
+      if(err) {
+        return err;
+      }
+      slideData = slides;
+    });
+
     data['slideData'] = slideData;
     io.sockets.emit('initSuccess', data);
   });
