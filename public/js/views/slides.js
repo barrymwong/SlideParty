@@ -9,7 +9,8 @@ var SlidesView = Backbone.View.extend({
   },
 
   hideAllButFirst: function() {
-    this.$el.children(':nth-child(n+2)').hide();
+    this.$el.children(':nth-child(n+2)').css({display :'none'});
+    this.$el.children(currentSlideIndex).css({display :'block'});
   },
 
   changeSlide: function(options) {
