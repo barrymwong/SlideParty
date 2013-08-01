@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
-    slideData = 'test';
+    _und = require('underscore'),
+    json = require('./slides.json');
 
-mongoose.connect('mongodb://' + "localhost" + '/test');
+mongoose.connect('mongodb://' + 'localhost' + '/test');
 var myDB = mongoose.connection;
 
 myDB.on('error', console.error.bind(console, 'connection error:'));
@@ -23,19 +24,14 @@ slideSchema = new mongoose.Schema(
 
 exports.Slide = mongoose.model('test_insert', slideSchema);
 
-var slide = new exports.Slide({title: 'cheeseburger', timestamp: new Date()});
-var slide2 = new exports.Slide({title: 'prime rib', image: 'http://barrymwong.com/images/pacific_ave.jpg', timestamp: new Date()});
-var slide3 = new exports.Slide({title: 'buta kimchee', timestamp: new Date()  });
+exports.Slide.find({}).remove();
 
-slide.save(function(err, slide) {
-  slide.title;
+_und.each(json.slides, function(value, index) {
+  var slide = new exports.Slide(json.slides[index]);
+
+  slide.save(function(err, slide) {
+    for(var key in json.slides[index]) {
+      slide[key] = value;
+    }
+  });
 });
-slide2.save(function(err, slide) {
-  slide.title;
-});
-slide3.save(function(err, slide) {
-  slide.title;
-});
-
-
-
