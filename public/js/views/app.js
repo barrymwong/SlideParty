@@ -2,22 +2,21 @@ var AppView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
+    socket.emit('init', {});
     App.Vent.on('appInit', this.appInit, this);
-
-    socket.emit('init', {direction: 'next', slideIndex: 1});
-
-    App.mainRouter = new MainRouter();
-    Backbone.history.start();
   },
 
   appInit: function(data) {
     App.slides = data.slideData;
-    
+
     this.slidesView = new SlidesView({
       collection: new SlidesCollection(App.slides)
     });
 
     this.render();
+
+    App.mainRouter = new MainRouter();
+    Backbone.history.start();
   },
 
   events: {

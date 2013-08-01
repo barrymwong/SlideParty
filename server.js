@@ -23,7 +23,6 @@ app.configure(function() {
   app.use(app.router);
 });
 
-
 app.get('/', function (req, res) {
   res.writeHead(200);
   res.send('admin page');
@@ -33,8 +32,6 @@ app.get('/', function (req, res) {
 app.get('/admin', function (req, res) {
   res.send('admin page');
 }); 
-
-
 
 io.sockets.on('connection', function(socket) {
 

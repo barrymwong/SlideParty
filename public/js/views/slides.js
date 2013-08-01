@@ -67,10 +67,11 @@ var SlidesView = Backbone.View.extend({
     this.$el.empty();
 
     this.collection.each(function(slide){
+      console.log(slide);
       var slideView = new SlideView({model: slide});
       this.$el.append(slideView.render().el);
     }, this);
 
-    return this;
+    return this;      
   }
 });

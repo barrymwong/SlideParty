@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     _und = require('underscore'),
+    // json = require('./slides.json');
     json = require('./slides.json');
 
 mongoose.connect('mongodb://' + 'localhost' + '/test');
@@ -11,16 +12,13 @@ myDB.once('open', function callback () {
   console.log("MY DB Connected with Mongoose");
 });
 
-slideSchema = new mongoose.Schema(
-  {
-    image: String,
-    title: String,
-    timestamp: Date
-  },
-  {
-    collection: 'test_insert'
-  }
-);
+slideSchema = new mongoose.Schema({
+  image: String,
+  title: String,
+  timestamp: Date
+}, {
+  collection: 'test_insert'
+});
 
 exports.Slide = mongoose.model('test_insert', slideSchema);
 
