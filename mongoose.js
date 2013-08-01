@@ -5,7 +5,12 @@ var mongoose = require('mongoose'),
     domain = 'localhost',
     collection = 'slides';
 
-mongoose.connect('mongodb://' + domain + '/' + db);
+if(process.env.NODE_ENV === 'production') {
+  mongoose.connect('mongodb://nodejitsu:5f75182b11a67754c879ac539efce7a4@dharma.mongohq.com:10043/nodejitsudb6486629187');
+} else {
+  mongoose.connect('mongodb://' + domain + '/' + db);
+}
+
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 mongoose.connection.once('open', function() {
@@ -33,7 +38,7 @@ mongoose.connection.once('open', function() {
       });
     }
   });
-  
+
 });
 
 

@@ -7,7 +7,7 @@ var express = require('express')
 
 var slideData = {};
 
-// config for session
+//config for session
 var MemoryStore = express.session.MemoryStore;
 var sessionStore = new MemoryStore();
 app.configure(function() {
@@ -34,6 +34,7 @@ app.get('/admin', function (req, res) {
 }); 
 
 io.sockets.on('connection', function(socket) {
+
   mongoose.Slide.find({}, function(err, slides) {
     if(err) {
       return err;
@@ -41,9 +42,9 @@ io.sockets.on('connection', function(socket) {
     slideData = slides;
   });
 
-  socket.on('init', function(data) {
+  socket.on('initLoad', function(data) {
     data['slideData'] = slideData;
-    io.sockets.emit('initSuccess', data);
+    socket.emit('initSuccess', data);
   });
 
   // server listens for direction
