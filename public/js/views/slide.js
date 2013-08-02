@@ -11,8 +11,8 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('youtube')) {
       this.renderYoutube();
     }
-    if(this.model.get('dthree')) {
-      this.renderDthree();
+    if(this.model.get('d3')) {
+      this.renderD3();
     } 
     return this;
   },
@@ -31,9 +31,10 @@ var SlideView = Backbone.View.extend({
     return this;
   },
 
-  renderDthree: function() {
+  renderD3: function() {
     this.$el.append(
-      '<div id="' + this.model.get('dthree') + '">test test test</div>'
+      '<div id="' + this.model.get('d3') + '"></div>' +
+      '<script src="js/d3/' + this.model.get('d3') + '.js"></script>'
     );
     return this;
   },

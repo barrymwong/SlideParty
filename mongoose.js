@@ -19,7 +19,8 @@ mongoose.connection.once('open', function() {
     image: String,
     title: String,
     timestamp: Date,
-    youtube: String
+    youtube: String,
+    d3: String
   }, {
     collection: collection
   });
