@@ -5,23 +5,33 @@ var shape = d3.select('#d3-shape')
       height: 300 
     });
 
+setInterval(function(){
   shape.append("circle")
     .attr({
-      x: 100,
-      y: 400,
       cx: 30,
       cy: 30,
-      r: 30,
+      r: 200,
       fill: 'red'
     })
     .transition()
-    .duration(10000)
-    .attr("r", 10);
+    .duration(5000)
+    .attr("r", 10)
+    .remove();
 
   shape.append("circle")
     .attr({
-      cx: 200,
-      cy: 200,
+      cx: 100,
+      cy: 100,
       r: 100,
       fill: 'green'
-    });
+    })
+    .transition()
+    .duration(2000)
+    .attr({
+      cx: 500,
+      cy: 100,
+      fill: 'blue'
+    })
+    .remove();
+
+},5000);
