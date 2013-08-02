@@ -18,7 +18,8 @@ mongoose.connection.once('open', function() {
   slideSchema = new mongoose.Schema({
     image: String,
     title: String,
-    timestamp: Date
+    timestamp: Date,
+    youtube: String
   }, {
     collection: collection
   });
