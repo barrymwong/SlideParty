@@ -13,18 +13,19 @@ var SlideView = Backbone.View.extend({
     }
     if(this.model.get('d3')) {
       this.renderD3();
+    }
+    if(this.model.get('poll')) {
+      this.renderPoll();
     } 
-    this.renderPoll();
 
     return this;
   },
 
   renderPoll: function() {
-    var data = {type: 'graphic'};
+    var data = {poll: this.model.get('poll')};
     var pollView = new PollView({model: new PollModel(data)});
-    this.$el.append(
-      pollView.render().el
-    );
+    this.$el.append(pollView.render().el);
+    return this;
   },
 
   renderHeadline: function() {

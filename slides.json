@@ -1,12 +1,38 @@
 {
   "slides" : [
-    {"title": "Welcome to SlideParty JS"},
-    {"title": "Reddit", "image": "http://i.qkme.me/3r2fxm.jpg"},
-    {"title": "Major Lazer - Get Free", "youtube": "//www.youtube.com/embed/ytIfSuy_mOA"},
-    {"title": "Fibonacci Pigeons", "image": "http://mathblag.files.wordpress.com/2011/11/fibonacci_pigeons.jpg"},
-    {"title": "Batman Cat", "image": "https://i.chzbgr.com/maxW500/7670554368/hA827CEEC/"},
-    {"title": "Grumpy Cat", "image": "https://i.chzbgr.com/maxW500/7704344064/h64A5357B/"},
-    {"title": "Dee Three", "d3": "d3-shape"},
-    {"title": "ERMAHGERD!", "image": "http://i1.kym-cdn.com/photos/images/newsfeed/000/333/003/0d3.jpg"}
+    {
+      "title": "Welcome to SlideParty JS"
+    },
+    {
+      "title": "Reddit", 
+      "image": "http://i.qkme.me/3r2fxm.jpg"
+    },
+    {
+      "title": "Major Lazer - Get Free", 
+      "youtube": "//www.youtube.com/embed/ytIfSuy_mOA",
+      "poll": "chart"
+    },
+    {
+      "title": "Fibonacci Pigeons", 
+      "image": "http://mathblag.files.wordpress.com/2011/11/fibonacci_pigeons.jpg",
+      "poll": "text"
+    },
+    {
+      "title": "Batman Cat", 
+      "image": "https://i.chzbgr.com/maxW500/7670554368/hA827CEEC/",
+      "poll": "vote"
+    },
+    {
+      "title": "Grumpy Cat", 
+      "image": "https://i.chzbgr.com/maxW500/7704344064/h64A5357B/"
+    },
+    {
+      "title": "Dee Three", 
+      "d3": "d3-shape"
+    },
+    {
+      "title": "ERMAHGERD!", 
+      "image": "http://i1.kym-cdn.com/photos/images/newsfeed/000/333/003/0d3.jpg"
+    }
   ] 
 }

@@ -20,7 +20,8 @@ mongoose.connection.once('open', function() {
     title: String,
     timestamp: Date,
     youtube: String,
-    d3: String
+    d3: String,
+    poll: String
   }, {
     collection: collection
   });
