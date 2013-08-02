@@ -14,7 +14,17 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('d3')) {
       this.renderD3();
     } 
+    this.renderPoll();
+
     return this;
+  },
+
+  renderPoll: function() {
+    var data = {type: 'graphic'};
+    var pollView = new PollView({model: new PollModel(data)});
+    this.$el.append(
+      pollView.render().el
+    );
   },
 
   renderHeadline: function() {

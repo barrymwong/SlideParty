@@ -7,3 +7,5 @@ h1 { background-color:#f3f3f3; padding:20px; margin-bottom:20px;}
 #next, #prev { position:fixed; top:50%; font-size: 30px; color:green; }
 #next { right: 20px; }
 #prev { left: 20px; }
+
+.poll { position:fixed; bottom:0; right:0; background-color:#f3f3f3;}
