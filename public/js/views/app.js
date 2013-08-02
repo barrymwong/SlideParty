@@ -17,11 +17,13 @@ var AppView = Backbone.View.extend({
 
     App.mainRouter = new MainRouter();
     Backbone.history.start();
-    
-    App.Vent.trigger('changeSlide', {
-      slideIndex: 1,
-      direction: 'next'
-    });    
+
+    if(!location.hash) {
+      App.Vent.trigger('changeSlide', {
+        slideIndex: 1,
+        direction: 'next'
+      });    
+    }
   },
 
   events: {
