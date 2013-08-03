@@ -2,8 +2,6 @@ var socket = io.connect(location.href);
 
 // triggered from server
 socket.on('directionSuccess', function(data) {
-  console.log('directionSuccess', data);
-
   App.Vent.trigger('changeSlide', {
     direction: data.direction,
     slideIndex: data.slideIndex,
@@ -13,4 +11,9 @@ socket.on('directionSuccess', function(data) {
 
 socket.on('initSuccess', function(data) {
   App.Vent.trigger('appInit', data);
+});
+
+socket.on('voteSuccess', function(data) {
+  console.log('voteSuccess-->', data);
+  App.Vent.trigger('updateVote', data);
 });

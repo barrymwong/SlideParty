@@ -6,6 +6,7 @@ var express = require('express')
   , mongoose = require('./mongoose');
 
 var slideData = {};
+var pollData = {};
 
 //config for session
 var MemoryStore = express.session.MemoryStore;
@@ -47,18 +48,26 @@ io.sockets.on('connection', function(socket) {
     socket.emit('initSuccess', data);
   });
 
+  socket.on('vote', function(data) {
+    for(var key in data) {
+      var value = pollData[key] || 0;
+      pollData[key] = value + data[key];
+    }
+    io.sockets.emit('voteSuccess', pollData);
+  });
+
   // server listens for direction
   socket.on('direction', function(data) {
     io.sockets.emit('directionSuccess', data);
   });
 
   socket.on('disconnect', function() {
-    console.log('user disconnected');
+    console.log('socket.on user disconnected');
   });
 });
 
 io.sockets.on('disconnect', function() {
-  console.log('user disconnected');
+  console.log('io.sockets user disconnected');
 });
 
 server.listen(8080);

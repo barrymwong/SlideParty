@@ -1,18 +1,6 @@
 var PollView = Backbone.View.extend({
   className: 'poll',
 
-  initialize: function() {
-    this.votes = 0;
-  },
-
-  events: {
-    'click button': 'doVote'
-  },
-
-  doVote: function() {
-    this.$el.find('button').html(++this.votes);
-  },
-
   render: function() {
     if(this.model.get('poll') === 'vote') {
       this.renderVote();
@@ -27,23 +15,23 @@ var PollView = Backbone.View.extend({
   },
 
   renderVote: function() {
-    this.$el.append(
-      '<div class="poll"><button>' + this.model.get('poll') + '</button></div>'
-    );
+    var buttonView = new ButtonView({model: new ButtonModel()});
+
+    this.$el.append(buttonView.render().el);
     return this;
   },
 
   renderChart: function() {
-    this.$el.append(
-      '<div class="poll"><button>' + this.model.get('poll') + '</button></div>'
-    );
+    var buttonView = new ButtonView({model: new ButtonModel()});
+
+    this.$el.append(buttonView.render().el);
     return this;
   },
 
   renderText: function() {
-    this.$el.append(
-      '<div class="poll"><button>' + this.model.get('poll') + '</button></div>'
-    );
+    var buttonView = new ButtonView({model: new ButtonModel()});
+
+    this.$el.append(buttonView.render().el);
     return this;
   }
 
