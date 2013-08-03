@@ -1,4 +1,4 @@
-var shape = d3.select('#d3-shape')
+var shape = d3.select('.d3-shape')
   .append('svg')
     .attr({
       width: 600,

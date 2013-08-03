@@ -5,6 +5,8 @@ var mongoose = require('mongoose'),
     domain = 'localhost',
     collection = 'slides';
 
+console.log('NODE_ENV-->', process.env.NODE_ENV);
+
 if(process.env.NODE_ENV === 'production') {
   mongoose.connect('mongodb://nodejitsu:5f75182b11a67754c879ac539efce7a4@dharma.mongohq.com:10043/nodejitsudb6486629187');
 } else {

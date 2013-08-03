@@ -9,10 +9,12 @@ var MainRouter = Backbone.Router.extend({
   },
 
   showSlides: function(slideIndex) {
-    App.Vent.trigger('changeSlide', {
-      slideIndex: slideIndex,
-      direction: 'next'
-    });
+    if(slideIndex <= App.slides.length) {
+      App.Vent.trigger('changeSlide', {
+        slideIndex: slideIndex,
+        direction: 'next'
+      });
+    }
   }
 
 });

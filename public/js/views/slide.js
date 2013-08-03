@@ -44,7 +44,7 @@ var SlideView = Backbone.View.extend({
 
   renderD3: function() {
     this.$el.append(
-      '<div id="' + this.model.get('d3') + '"></div>' +
+      '<div class="' + this.model.get('d3') + '"></div>' +
       '<script src="js/d3/' + this.model.get('d3') + '.js"></script>'
     );
     return this;
