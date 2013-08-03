@@ -1,39 +1,42 @@
 {
   "slides" : [
     {
-      "title": "Welcome to SlideParty JS"
+      "title": "Welcome to SlideParty JS (BETA)",
+      "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg"
     },
     {
-      "title": "Reddit", 
-      "image": "http://i.qkme.me/3r2fxm.jpg",
+      "title": "Live slide presentation with your friends",
+      "image": "http://www.helpfil.com/wp-content/uploads/2012/08/Friends-TV-show-590x300.jpg"
+    },
+    {
+      "title": "Control slides remotely to other desktops and mobile devices",
+      "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg"
+    },
+    {
+      "title": "Do you LIKE this?",
+      "textTop": "Please give me your feedback!",
       "poll": "vote"
     },
     {
-      "title": "Major Lazer - Get Free", 
+      "title": "Share your favorite Youtube videos", 
       "youtube": "//www.youtube.com/embed/ytIfSuy_mOA",
+      "textBottom": "Get Free - Major Lazer",
       "poll": "chart"
     },
     {
-      "title": "Fibonacci Pigeons", 
-      "image": "http://mathblag.files.wordpress.com/2011/11/fibonacci_pigeons.jpg",
-      "poll": "text"
-    },
-    {
-      "title": "Batman Cat", 
-      "image": "https://i.chzbgr.com/maxW500/7670554368/hA827CEEC/",
+      "title": "Say What??...Embed Tweets!",
+      "tweet": "<p>I fell off a 50ft ladder today... Luckily I was on the bottom step.</p>&mdash; Not Will Ferrell (@itsWillyFerrell) <a href=\"https://twitter.com/itsWillyFerrell/statuses/363717180824633344\">August 3, 2013</a>",
       "poll": "vote"
     },
     {
-      "title": "Grumpy Cat", 
-      "image": "https://i.chzbgr.com/maxW500/7704344064/h64A5357B/"
+      "title": "Even add some D3!", 
+      "d3": "d3-shape",
+      "poll": "vote"
     },
     {
-      "title": "Dee Three", 
-      "d3": "d3-shape"
-    },
-    {
-      "title": "ERMAHGERD!", 
-      "image": "http://i1.kym-cdn.com/photos/images/newsfeed/000/333/003/0d3.jpg"
+      "title": "Thank You", 
+      "image": "http://farm1.staticflickr.com/165/396771291_aea2cf831e.jpg",
+      "poll": "vote"
     }
   ] 
 }

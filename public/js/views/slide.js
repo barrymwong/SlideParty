@@ -5,6 +5,9 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('title')) {
       this.renderHeadline();
     } 
+    if(this.model.get('textTop')) {
+      this.renderTextTop();
+    } 
     if(this.model.get('image')) {
       this.renderImage();
     } 
@@ -14,10 +17,30 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('d3')) {
       this.renderD3();
     }
+    if(this.model.get('tweet')) {
+      this.renderTweet();
+    }
     if(this.model.get('poll')) {
       this.renderPoll();
+    }
+    if(this.model.get('textBottom')) {
+      this.renderTextBottom();
     } 
 
+    return this;
+  },
+
+  renderTextTop: function() {
+    this.$el.attr('data-slide', this.cid).append(
+      '<p>' + this.model.get('textTop') + '</p>'
+    );
+    return this;
+  },
+
+  renderTextBottom: function() {
+    this.$el.attr('data-slide', this.cid).append(
+      '<p>' + this.model.get('textBottom') + '</p>'
+    );
     return this;
   },
 
@@ -29,21 +52,21 @@ var SlideView = Backbone.View.extend({
   },
 
   renderHeadline: function() {
-    this.$el.append(
+    this.$el.attr('data-slide', this.cid).append(
       '<h1>' + this.model.get('title') + '</h1>'
     );
     return this;
   },
 
   renderImage: function() {
-    this.$el.append(
+    this.$el.attr('data-slide', this.cid).append(
       '<img src="' + this.model.get('image') + '">'
     );
     return this;
   },
 
   renderD3: function() {
-    this.$el.append(
+    this.$el.attr('data-slide', this.cid).append(
       '<div class="' + this.model.get('d3') + '"></div>' +
       '<script src="js/d3/' + this.model.get('d3') + '.js"></script>'
     );
@@ -51,9 +74,16 @@ var SlideView = Backbone.View.extend({
   },
 
   renderYoutube: function() {
-    this.$el.append(
+    this.$el.attr('data-slide', this.cid).append(
       '<iframe width="480" height="360" src="' + this.model.get('youtube') + '" frameborder="0" allowfullscreen></iframe>'
     );
     return this;
+  },
+
+  renderTweet: function() {
+    this.$el.attr('data-slide', this.cid).append(
+      '<blockquote class="twitter-tweet" align="center">' + this.model.get('tweet') + '</blockquote>'
+    );
   }
+
 });

@@ -45,6 +45,7 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('initLoad', function(data) {
     data['slideData'] = slideData;
+    data['pollData'] = pollData;
     socket.emit('initSuccess', data);
   });
 

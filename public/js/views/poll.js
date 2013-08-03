@@ -17,21 +17,21 @@ var PollView = Backbone.View.extend({
   renderVote: function() {
     var buttonView = new ButtonView({model: new ButtonModel()});
 
-    this.$el.append(buttonView.render().el);
+    this.$el.attr('data-poll', this.cid).append(buttonView.render().el);
     return this;
   },
 
   renderChart: function() {
     var buttonView = new ButtonView({model: new ButtonModel()});
 
-    this.$el.append(buttonView.render().el);
+    this.$el.attr('data-poll', this.cid).append(buttonView.render().el);
     return this;
   },
 
   renderText: function() {
     var buttonView = new ButtonView({model: new ButtonModel()});
 
-    this.$el.append(buttonView.render().el);
+    this.$el.attr('data-poll', this.cid).append(buttonView.render().el);
     return this;
   }
 

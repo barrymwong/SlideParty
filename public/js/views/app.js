@@ -24,6 +24,10 @@ var AppView = Backbone.View.extend({
         direction: 'next'
       });    
     }
+
+    App.Vent.trigger('updateVote', data.pollData);
+
+    twttr.widgets.load();
   },
 
   events: {

@@ -18,17 +18,17 @@ var ButtonView = Backbone.View.extend({
   },
 
   updateVote: function(data) {
-    console.log(this);
     for(var key in data) {
       if(this.cid === key){
-        $('button#' + key).html(data[key]);
+        var label = data[key] === 1 ? 'like' : 'likes';
+        $('button#' + key).html(data[key] + ' ' + label);
       }
     }
     return this;
   },
 
   render: function() {
-    this.$el.attr({id: this.cid}).append(this.cid);
+    this.$el.attr({id: this.cid}).append('Be the first to like this slide!');
     return this;
   }
 });
