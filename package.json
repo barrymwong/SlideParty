@@ -1,6 +1,6 @@
 {
-  "name": "slide-presentation",
-  "subdomain": "barrymwong-slide-presentation",
+  "name": "slideparty",
+  "subdomain": "slideparty",
   "scripts": {
     "start": "node server.js"
   },

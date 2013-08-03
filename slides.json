@@ -1,7 +1,7 @@
 {
   "slides" : [
     {
-      "title": "Welcome to SlideParty JS (BETA)",
+      "title": "Welcome to SlideParty (BETA)",
       "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg"
     },
     {
@@ -9,7 +9,7 @@
       "image": "http://www.helpfil.com/wp-content/uploads/2012/08/Friends-TV-show-590x300.jpg"
     },
     {
-      "title": "Control slides remotely to other desktops and mobile devices",
+      "title": "Control slides remotely to other devices",
       "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg"
     },
     {
@@ -19,8 +19,8 @@
     },
     {
       "title": "Share your favorite Youtube videos", 
-      "youtube": "//www.youtube.com/embed/ytIfSuy_mOA",
-      "textBottom": "Get Free - Major Lazer",
+      "youtube": "//www.youtube.com/embed/qybUFnY7Y8w",
+      "textBottom": "OK Go - This Too Shall Pass",
       "poll": "chart"
     },
     {
