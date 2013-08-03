@@ -1,16 +1,17 @@
-slide-presentation (Slide Party)
+SlideParty-js
 ==================
-Presenter has a slide presentation in front of a live audience
-The presenter can use mobile device to control main slide presentation
-The presenter can share a poll with the audience
-The audience uses their mobile devices to enter feedback
-Data is collected and appears real-time on the slide presentation
+- Presenter has a slide presentation in front of a live audience
+- The presenter can use mobile device to control main slide presentation
+- The presenter can share a poll with the audience
+- The audience uses their mobile devices to enter feedback
+- Data is collected and appears real-time on the slide presentation
 
 npm install & requires
 ==================
-npm install express
-npm install socket.io
-npm install mongodb
+- express
+- socket.io
+- mongoose
+- underscore
 
 Socket.io
 ==================
