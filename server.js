@@ -3,7 +3,8 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
   , path = require('path')
-  , mongoose = require('./mongoose');
+  , mongoose = require('./mongoose')
+  , fs = require('fs');
 
 var slideData = {};
 var pollData = {};
@@ -11,6 +12,8 @@ var pollData = {};
 //config for session
 var MemoryStore = express.session.MemoryStore;
 var sessionStore = new MemoryStore();
+var html = fs.readFileSync('./public/index.html');
+console.log('dirname-->', __dirname);
 app.configure(function() {
   app.use(express.static(path.join(__dirname + '/public')));
   app.use(express.bodyParser());
@@ -24,18 +27,12 @@ app.configure(function() {
   app.use(app.router);
 });
 
-app.get('/', function (req, res) {
-  res.writeHead(200);
-  res.send('admin page');
-  res.end();
-}); 
-
-app.get('/admin', function (req, res) {
-  res.send('admin page');
+app.get('/test', function (req, res) {
+  res.writeHead(200, {"Content-Type": "text/html"});
+  res.end(html);
 }); 
 
 io.sockets.on('connection', function(socket) {
-
   mongoose.Slide.find({}, function(err, slides) {
     if(err) {
       return err;
