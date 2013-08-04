@@ -5,6 +5,9 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('title')) {
       this.renderHeadline();
     } 
+    if(this.model.get('shareLink')) {
+      this.renderShareLink();
+    } 
     if(this.model.get('textTop')) {
       this.renderTextTop();
     } 
@@ -26,7 +29,17 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('textBottom')) {
       this.renderTextBottom();
     } 
+    return this;
+  },
 
+  renderShareLink: function() {
+    if(!!this.model.get('shareLink')) {
+      var loc = location.href;
+      var address = loc.split('/');
+      this.$el.attr('data-slide', this.cid).append(
+        '<p>Share Slide: <a href="' + loc + '">'+ address[2] +'</a></p>'
+      );
+    }
     return this;
   },
 
