@@ -3,6 +3,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     App.Vent.on('appInit', this.appInit, this);
+    App.Vent.on('setAdmin', this.appInit, this);
     socket.emit('initLoad', {});
   },
 
@@ -32,7 +33,14 @@ var AppView = Backbone.View.extend({
 
   events: {
     'keyup': 'keyUp',
-    'click .button-slide' : 'nextPrevButtons'
+    'click .button-slide' : 'nextPrevButtons',
+    'click #admin' : 'setAdmin'
+  },
+
+  setAdmin: function(event) {
+    event.preventDefault();
+    console.log(event);
+    socket.emit('setAdmin', {});
   },
 
   keyUp: function(event) {

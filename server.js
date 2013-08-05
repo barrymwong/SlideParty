@@ -11,26 +11,27 @@ var pollData = {};
 
 //config for session
 var MemoryStore = express.session.MemoryStore;
-var sessionStore = new MemoryStore();
 var html = fs.readFileSync('./public/index.html');
-console.log('dirname-->', __dirname);
 app.configure(function() {
-  app.use(express.static(path.join(__dirname + '/public')));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({
-    store: sessionStore,
+    store: new MemoryStore(),
     secret: 'secret',
     cookie: {httpOnly: false},
     key: 'cookie.sid'
   }));
+  app.use(express.static(path.join(__dirname + '/public')));
   app.use(app.router);
 });
 
-app.get('/test', function (req, res) {
-  res.writeHead(200, {"Content-Type": "text/html"});
-  res.end(html);
-}); 
+app.get('/edit', function (req, res) {
+  res.sendfile('./public/edit.html');
+});
+
+app.post('/edit', function (req, res) {
+  console.log(req);
+});
 
 io.sockets.on('connection', function(socket) {
   mongoose.Slide.find({}, function(err, slides) {
@@ -40,10 +41,23 @@ io.sockets.on('connection', function(socket) {
     slideData = slides;
   });
 
+
+  // app.get('/:user', function (req, res) {
+  //   var user = req.params.user,
+  //       path = req.params[0] ? req.params[0] : 'index.html';
+  //   res.sendfile('./public/' + path);
+  //   socket.emit('initSuccess', slideData);
+  // });
+
   socket.on('initLoad', function(data) {
     data['slideData'] = slideData;
     data['pollData'] = pollData;
     socket.emit('initSuccess', data);
+  });
+
+  socket.on('setAdmin', function() {
+    console.log(socket.id);
+    socket.emit('enableAdmin', true);
   });
 
   socket.on('vote', function(data) {
@@ -67,5 +81,6 @@ io.sockets.on('connection', function(socket) {
 io.sockets.on('disconnect', function() {
   console.log('io.sockets user disconnected');
 });
+
 
 server.listen(8080);

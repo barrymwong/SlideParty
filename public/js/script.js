@@ -1,7 +1,7 @@
 window.App = {
   Vent: _.extend({}, Backbone.Events),
   slides : [
-    {title: 'SlideParty JS'}
+    {title: 'SlideParty'}
   ]
 };
 var appView = new AppView();
