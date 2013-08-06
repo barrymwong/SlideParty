@@ -20,10 +20,97 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <form>
-    <textarea class="ckeditor" cols="80" id="edit" name="edit" rows="10"></textarea>
-    <button>Add new slide</button>
-  </form>
+  <div class="slides">
+    <div class="slide" style="display:block">
+      <form method="post" action="/edit">
+        
+
+        <h1 data-edit="data-title" id="edit-title" contenteditable="true">(New Slide Title)</h1>
+        <div data-edit="data-html" id="edit-html" contenteditable="true">(edit content)</div>
+
+        <input id="data-title" name="edit[title]" type="hidden">
+        <input id="data-html" name="edit[html]" type="hidden">
+
+
+<!--         <input id="edit-title" type="text" name="edit[title]" placeholder="(Slide Page Title)">
+        <textarea id="edit-html" class="ckeditor" cols="80" name="edit[html]" rows="10" placeholder="(Enter Text)"></textarea> -->
+        <button type="submit">Add new slide</button>
+
+      </form>
+    </div>
+  </div>
+  <script src="js/lib/jquery-2.0.3.min.js"></script>
   <script src="js/lib/ckeditor/ckeditor.js"></script>
+  <script>
+      CKEDITOR.disableAutoInline = true;
+
+      var configTitle = {
+        toolbarGroups: [
+          { name: 'mode' },
+          { name: 'links' },
+          { name: 'colors' }
+        ],
+        extraPlugins: 'sourcedialog',
+        removePlugins: 'sourcearea'
+      };
+
+      var configHtml = {
+        toolbarGroups: [
+          { name: 'mode' },
+          { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+          { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+          { name: 'links' },
+          { name: 'insert' },
+          { name: 'forms' },
+          { name: 'tools' },
+          { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+          { name: 'others' },
+          '/',
+          { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+          { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+          { name: 'styles' },
+          { name: 'colors' }
+        ],
+        extraPlugins: 'sourcedialog',
+        removePlugins: 'sourcearea'
+      };
+
+      CKEDITOR.inline( 'edit-title', configTitle );
+      CKEDITOR.inline( 'edit-html', configHtml );
+  </script>
+  <script>
+    (function() {
+
+      var success = function(data) {
+        console.log(data);
+      };
+
+      var $contEdit = $('[contenteditable=true]');
+
+      var copyToHidden = function() {
+        $contEdit.each(function(index) {
+          var $item = $contEdit.eq(index);
+          $('#' + $item.data('edit')).val($item.html());
+        });
+      };
+
+      $contEdit.on('click', function() {
+        $(this).getSelection();
+      });
+
+      $('form').on('submit', function(e) {
+        e.preventDefault();
+        copyToHidden();
+        $.ajax({
+          type: 'POST',
+          url: '/edit',
+          data: $(this).serialize(),
+          dataType: 'text',
+          success: success
+        });
+        console.log($(this).serialize());
+      });
+    }());
+  </script>
 </body>
 </html>

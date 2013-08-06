@@ -4,6 +4,7 @@ var express = require('express')
   , io = require('socket.io').listen(server)
   , path = require('path')
   , mongoose = require('./mongoose')
+  , _und = require('underscore')
   , fs = require('fs');
 
 var slideData = {};
@@ -30,7 +31,14 @@ app.get('/edit', function (req, res) {
 });
 
 app.post('/edit', function (req, res) {
-  console.log(req);
+  console.log(req.body.edit);
+
+  new mongoose.Slide(req.body.edit).save(function(err, slide) {
+    if(err) {
+      return err;
+    }
+  });
+  res.end('done');
 });
 
 io.sockets.on('connection', function(socket) {
@@ -41,13 +49,12 @@ io.sockets.on('connection', function(socket) {
     slideData = slides;
   });
 
-
-  // app.get('/:user', function (req, res) {
-  //   var user = req.params.user,
-  //       path = req.params[0] ? req.params[0] : 'index.html';
-  //   res.sendfile('./public/' + path);
-  //   socket.emit('initSuccess', slideData);
-  // });
+/*  app.get('/:user', function (req, res) {
+    var user = req.params.user,
+        path = req.params[0] ? req.params[0] : 'index.html';
+    res.sendfile('./public/' + path);
+    socket.emit('initSuccess', slideData);
+  });*/
 
   socket.on('initLoad', function(data) {
     data['slideData'] = slideData;

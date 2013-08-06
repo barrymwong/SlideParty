@@ -30,6 +30,14 @@ rect {
   stroke: #999;
 }
 
+h1[contenteditable=true], 
+div[contenteditable=true] 
+{ cursor:pointer; border:1px solid transparent; }
+
+h1[contenteditable=true]:hover, 
+div[contenteditable=true]:hover
+{ border:1px dashed red; }
+
 @media screen and (max-width: 768px) {
   .h1 { font-size:24px; }
   body { font-size:18px; }

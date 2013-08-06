@@ -36,3 +36,13 @@ CKEDITOR.editorConfig = function( config ) {
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 };
+
+CKEDITOR.inline( 'editable', {
+	extraPlugins: 'sourcedialog'
+});
+
+// Framed editor.
+CKEDITOR.replace( 'textarea_id', {
+	extraPlugins: 'sourcedialog',
+	removePlugins: 'sourcearea'
+});

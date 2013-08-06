@@ -26,6 +26,9 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('poll')) {
       this.renderPoll();
     }
+    if(this.model.get('html')) {
+      this.renderHTML();
+    } 
     if(this.model.get('textBottom')) {
       this.renderTextBottom();
     } 
@@ -40,6 +43,13 @@ var SlideView = Backbone.View.extend({
         '<p>Share Slide: <a href="' + loc + '">'+ address[2] +'</a></p>'
       );
     }
+    return this;
+  },
+
+  renderHTML: function() {
+    this.$el.attr('data-slide', this.cid).append(
+      '<div>' + this.model.get('html') + '</div>'
+    );
     return this;
   },
 
