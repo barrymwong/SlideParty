@@ -12,7 +12,6 @@ var pollData = {};
 
 //config for session
 var MemoryStore = express.session.MemoryStore;
-var html = fs.readFileSync('./public/index.html');
 app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.cookieParser());
@@ -26,13 +25,19 @@ app.configure(function() {
   app.use(app.router);
 });
 
-app.get('/edit', function (req, res) {
+var checkAuth = function(req, res, next) {
+  if (!req.session.user_id) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
+
+app.get('/edit', checkAuth, function (req, res) {
   res.sendfile('./public/edit.html');
 });
 
 app.post('/edit', function (req, res) {
-  console.log(req.body.edit);
-
   new mongoose.Slide(req.body.edit).save(function(err, slide) {
     if(err) {
       return err;
@@ -41,6 +46,25 @@ app.post('/edit', function (req, res) {
   res.end('done');
 });
 
+app.get('/login', function (req, res) {
+  res.sendfile('./public/login.html');
+});
+
+app.post('/login', function (req, res) {
+  var post = req.body;
+  if (post.username === 'admin' && post.password === 'pass') {
+    req.session.user_id = 'admin';
+    res.redirect('/edit');
+  } else {
+    res.send('Bad user/pass');
+  }
+});
+
+app.get('/logout', function (req, res) {
+  delete req.session.user_id;
+  res.redirect('/login');
+});      
+
 io.sockets.on('connection', function(socket) {
   mongoose.Slide.find({}, function(err, slides) {
     if(err) {
@@ -48,13 +72,6 @@ io.sockets.on('connection', function(socket) {
     }
     slideData = slides;
   });
-
-/*  app.get('/:user', function (req, res) {
-    var user = req.params.user,
-        path = req.params[0] ? req.params[0] : 'index.html';
-    res.sendfile('./public/' + path);
-    socket.emit('initSuccess', slideData);
-  });*/
 
   socket.on('initLoad', function(data) {
     data['slideData'] = slideData;

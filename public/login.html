@@ -2,11 +2,29 @@
 <html>
 <head>
   <title>Login</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Welcome to SlideParty (BETA)</title>
+
+  <link href="http://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/skeleton/base.css">
+  <link rel="stylesheet" href="css/skeleton/layout.css">
+  <link rel="stylesheet" href="css/skeleton/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <form>
-    <input id="username" type="text" placeholder="Username">
-    <input id="password" type="password" placeholder="Password">
+  <form method="POST" action="login/">
+  	<h1>Admin Login</h1>
+    <input id="username" name="username" type="text" placeholder="Username">
+    <input id="password" name="password" type="password" placeholder="Password">
     <button>Submit</button>
   </form>
 </body>
