@@ -54,12 +54,11 @@ io.sockets.on('connection', function(socket) {
   });
 
   app.post('/edit', checkAuth, function (req, res) {
-    var getData = getSlideData();
     new mongoose.Slide(req.body.edit).save(function(err, slide) {
       if(err) {
         return err;
       }
-      socket.emit('initSuccess', getData);
+      io.sockets.emit('slideUpdateSuccess', slide);
     });
     res.end('done');
   });

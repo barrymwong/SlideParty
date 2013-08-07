@@ -19,9 +19,8 @@ socket.on('voteSuccess', function(data) {
   App.Vent.trigger('updateVote', data);
 });
 
-socket.on('enableAdmin', function(data) {
-  console.log('voteSuccess-->', data);
-  App.Vent.trigger('updateVote', data);
+socket.on('slideUpdateSuccess', function(data) {
+  App.Vent.trigger('renderSingle', data);
 });
 
 socket.on('connect', function(data) {
