@@ -10,17 +10,21 @@ socket.on('directionSuccess', function(data) {
 });
 
 socket.on('initSuccess', function(data) {
-  console.log('initSuccess-->', data);
+  //console.log('initSuccess-->', data);
   App.Vent.trigger('appInit', data);
 });
 
 socket.on('voteSuccess', function(data) {
-  console.log('voteSuccess-->', data);
+  //console.log('voteSuccess-->', data);
   App.Vent.trigger('updateVote', data);
 });
 
 socket.on('slideUpdateSuccess', function(data) {
   App.Vent.trigger('renderSingle', data);
+});
+
+socket.on('hijackSuccess', function(data) {
+  App.Vent.trigger('hijack', data);
 });
 
 socket.on('connect', function(data) {

@@ -2,8 +2,15 @@ var AppView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
+    this.noHijack = true;
     App.Vent.on('appInit', this.appInit, this);
+    App.Vent.on('hijack', this.doNotHijack, this);
     socket.emit('initLoad', {});
+  },
+
+  events: {
+    'keyup': 'keyUp',
+    'click .button-slide': 'nextPrevButtons'
   },
 
   appInit: function(data) {
@@ -22,16 +29,27 @@ var AppView = Backbone.View.extend({
       });    
     }
 
+    if(data.isAdmin.hasOwnProperty('admin')) {
+      App.Vent.trigger('hijack', {noHijack: false});
+    }
+
     twttr.widgets.load();
     App.Vent.trigger('updateVote', data.pollData);
   },
 
-  events: {
-    'keyup': 'keyUp',
-    'click .button-slide': 'nextPrevButtons'
+  doNotHijack: function(data) {
+    this.noHijack = data.noHijack;
+    if(this.noHijack) {
+      $('body').removeClass('is-hijack');
+    } else {
+      $('body').addClass('is-hijack');
+    }
   },
 
   keyUp: function(event) {
+    if(this.noHijack === false) {
+      return false;
+    }
     // left 37, right 39
     if(event.keyCode === 37 || event.keyCode === 39){
       App.Vent.trigger('changeSlide', {
@@ -42,6 +60,9 @@ var AppView = Backbone.View.extend({
 
   nextPrevButtons: function(event) {
     event.preventDefault();
+    if(this.noHijack === false) {
+      return false;
+    }
     App.Vent.trigger('changeSlide', {
       direction: $(event.target).data('slide')
     });

@@ -5,6 +5,8 @@ h1 { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; paddin
 
 .slide { width:100%; text-align:center; background-color:#fff; display:none;}
 
+.is-hijack #next,
+.is-hijack #prev { display:none !important; }
 #next, #prev { position:fixed; top:50%; font-size: 30px; color:green; background-color:#fff;}
 #next { right: 0px; }
 #prev { left: 0px; }

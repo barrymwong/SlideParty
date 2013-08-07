@@ -22,8 +22,8 @@ app.configure(function() {
     cookie: {httpOnly: false},
     key: 'cookie.sid'
   }));
-  app.use(express.static(path.join(__dirname + '/public')));
   app.use(app.router);
+  app.use(express.static(path.join(__dirname + '/public')));
 });
 
 io.sockets.on('connection', function(socket) {
@@ -32,7 +32,7 @@ io.sockets.on('connection', function(socket) {
     if (!req.session.user_id) {
       res.redirect('/login');
     } else {
-      isAdmin[socket.id] = req.session.user_id;
+      isAdmin[req.session.user_id] = true;
       next();
     }
   };
@@ -49,7 +49,6 @@ io.sockets.on('connection', function(socket) {
   getSlideData();
 
   app.get('/edit', checkAuth, function (req, res) {
-    console.log(isAdmin);
     res.sendfile('./public/edit.html');
   });
 
@@ -76,6 +75,7 @@ io.sockets.on('connection', function(socket) {
       } else {
         res.redirect('/');
       }
+      io.sockets.emit('hijackSuccess', {noHijack: false});
     } else {
       res.send('Bad user/pass');
     }
@@ -83,6 +83,8 @@ io.sockets.on('connection', function(socket) {
 
   app.get('/logout', function (req, res) {
     delete req.session.user_id;
+    isAdmin = {};
+    io.sockets.emit('hijackSuccess', {noHijack: true});
     res.redirect('/login');
   });      
 
@@ -90,15 +92,8 @@ io.sockets.on('connection', function(socket) {
     var getData = getSlideData();
     data['slideData'] = getData;
     data['pollData'] = pollData;
-    if(isAdmin[socket.id]) {
-      data['slideData'].push({title: 'admin', textTop: socket.id});
-    }
+    data['isAdmin'] = isAdmin;
     socket.emit('initSuccess', data);
-  });
-
-  socket.on('setAdmin', function() {
-    console.log(socket.id);
-    socket.emit('enableAdmin', true);
   });
 
   socket.on('vote', function(data) {

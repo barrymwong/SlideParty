@@ -2,10 +2,13 @@ var SlidesView = Backbone.View.extend({
   className: 'slides',
 
   initialize: function() {
+    this.noHijack = true;
     this.currentSlideIndex = 1;
     App.Vent.on('init', this.hideAllButFirst, this);
     App.Vent.on('changeSlide', this.changeSlide, this);
     App.Vent.on('renderSingle', this.renderSingle, this);
+    App.Vent.on('hijack', this.doNotHijack, this);
+
     this.transitionSpeed = 400;
   },
 
@@ -67,13 +70,19 @@ var SlidesView = Backbone.View.extend({
 
     // client sends to server
     if(slideIndex > 0 && slideIndex <= App.slides.length && slideIndex !== lastSlide) {
-      socket.emit('direction', {direction: dir, slideIndex: slideIndex});
+      if(this.noHijack) {
+        socket.emit('direction', {direction: dir, slideIndex: slideIndex});
+      } else {
+        App.Vent.trigger('changeSlide', {
+          slideIndex: slideIndex,
+          direction: dir
+        });
+      }
     }
   },
 
   renderSingle: function(data) {
     App.slides.push(data);
-
     var slideView = new SlideView({
       model: new SlideModel(data)
     });
