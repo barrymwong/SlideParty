@@ -69,9 +69,13 @@ io.sockets.on('connection', function(socket) {
 
   app.post('/login', function (req, res) {
     var post = req.body;
-    if (post.username === 'admin' && post.password === 'pass') {
+    if (post.login.username === 'admin' && post.login.password === '1234') {
       req.session.user_id = 'admin';
-      res.redirect('/edit');
+      if(post.login.nav === 'new') {
+        res.redirect('/edit');
+      } else {
+        res.redirect('/');
+      }
     } else {
       res.send('Bad user/pass');
     }

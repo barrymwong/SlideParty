@@ -23,14 +23,14 @@
 <body>
   <form method="POST" action="login/">
   	<h1>Admin Login</h1>
-    <select id="nav" name="nav">
+    <select id="nav" name="login[nav]">
       <optgroup label="Go to page:">
-        <option value="slides">Slides<option>
-        <option value="new">Create new slide<option>
+        <option value="slides">Slides</option>
+        <option value="new">Create new slide</option>
       <optgroup>
     </select>
-    <input id="username" name="username" type="text" placeholder="Username">
-    <input id="password" name="password" type="password" placeholder="Password">
+    <input id="username" name="login[username]" type="text" placeholder="Username">
+    <input id="password" name="login[password]" type="password" placeholder="Password">
     <button>Submit</button>
   </form>
 </body>
