@@ -18,6 +18,7 @@ mongoose.connection.on('error', console.error.bind(console, 'connection error:')
 mongoose.connection.once('open', function() {
   console.log("MY DB Connected with Mongoose");
   slideSchema = new mongoose.Schema({
+    sortID: Number,
     image: String,
     title: String,
     timestamp: Date,
@@ -28,7 +29,8 @@ mongoose.connection.once('open', function() {
     textTop: String,
     textBottom: String,
     shareLink: Boolean,
-    html: String
+    html: String,
+    login: String
   }, {
     collection: collection
   });

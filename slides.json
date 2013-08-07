@@ -1,40 +1,49 @@
 {
   "slides" : [
     {
+      "sortID" : 8,
       "title": "Welcome to SlideParty (BETA)",
       "shareLink": true,
-      "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg"
+      "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg",
+      "login": true
     },
     {
+      "sortID" : 7,
       "title": "Live slide presentation with your friends",
       "image": "http://www.helpfil.com/wp-content/uploads/2012/08/Friends-TV-show-590x300.jpg"
     },
     {
+      "sortID" : 6,
       "title": "Control slides remotely with other devices",
       "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg"
     },
     {
+      "sortID" : 5,
       "title": "Do you LIKE this?",
       "textTop": "Please give me your feedback!",
       "poll": "vote"
     },
     {
+      "sortID" : 4,
       "title": "Share your favorite Youtube videos", 
       "youtube": "//www.youtube.com/embed/qybUFnY7Y8w",
       "textBottom": "OK Go - This Too Shall Pass",
       "poll": "chart"
     },
     {
+      "sortID" : 3,
       "title": "Say What??...Embed Tweets!",
       "tweet": "<p>I fell off a 50ft ladder today... Luckily I was on the bottom step.</p>&mdash; Not Will Ferrell (@itsWillyFerrell) <a href=\"https://twitter.com/itsWillyFerrell/statuses/363717180824633344\">August 3, 2013</a>",
       "poll": "vote"
     },
     {
+      "sortID" : 2,
       "title": "Even add some D3!", 
       "d3": "d3-shape",
       "poll": "vote"
     },
     {
+      "sortID" : 1,
       "title": "Thank You", 
       "image": "http://farm1.staticflickr.com/165/396771291_aea2cf831e.jpg",
       "poll": "vote"

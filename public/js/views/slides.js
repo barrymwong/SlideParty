@@ -21,6 +21,14 @@ var SlidesView = Backbone.View.extend({
 
       newSlide = slides.eq(this.currentSlideIndex - 1);
 
+      if(this.currentSlideIndex < 2) {
+        $('#prev').hide();
+      } else if(this.currentSlideIndex === App.slides.length) {
+        $('#next').hide();
+      } else {
+        $('#next, #prev').show();
+      }
+
       slides
         .filter(':visible')
         .css('position', 'absolute')

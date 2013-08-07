@@ -25,5 +25,4 @@ socket.on('enableAdmin', function(data) {
 });
 
 socket.on('connect', function(data) {
-  console.log('---->connection<----', data);
 });

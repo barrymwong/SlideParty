@@ -32,6 +32,16 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('textBottom')) {
       this.renderTextBottom();
     } 
+    if(this.model.get('login')) {
+      this.renderLogin();
+    }
+    return this;
+  },
+
+  renderLogin: function() {
+    this.$el.attr('data-slide', this.cid).append(
+      '<div><a href="#login">Login<a></div>'
+    );
     return this;
   },
 
@@ -76,7 +86,7 @@ var SlideView = Backbone.View.extend({
 
   renderHeadline: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<h1>' + this.model.get('title') + '</h1>'
+      '<header><h1>' + this.model.get('title') + '</h1></header>'
     );
     return this;
   },
@@ -107,6 +117,7 @@ var SlideView = Backbone.View.extend({
     this.$el.attr('data-slide', this.cid).append(
       '<blockquote class="twitter-tweet" align="center">' + this.model.get('tweet') + '</blockquote>'
     );
+    return this;
   }
 
 });

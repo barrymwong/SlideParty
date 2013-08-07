@@ -3,19 +3,15 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     App.Vent.on('appInit', this.appInit, this);
-    App.Vent.on('setAdmin', this.appInit, this);
     socket.emit('initLoad', {});
   },
 
   appInit: function(data) {
     App.slides = data.slideData;
-
     this.slidesView = new SlidesView({
       collection: new SlidesCollection(App.slides)
     });
-
     this.render();
-
     App.mainRouter = new MainRouter();
     Backbone.history.start();
 
@@ -26,21 +22,13 @@ var AppView = Backbone.View.extend({
       });    
     }
 
-    App.Vent.trigger('updateVote', data.pollData);
-
     twttr.widgets.load();
+    App.Vent.trigger('updateVote', data.pollData);
   },
 
   events: {
     'keyup': 'keyUp',
-    'click .button-slide' : 'nextPrevButtons',
-    'click #admin' : 'setAdmin'
-  },
-
-  setAdmin: function(event) {
-    event.preventDefault();
-    console.log(event);
-    socket.emit('setAdmin', {});
+    'click .button-slide': 'nextPrevButtons'
   },
 
   keyUp: function(event) {
@@ -54,7 +42,6 @@ var AppView = Backbone.View.extend({
 
   nextPrevButtons: function(event) {
     event.preventDefault();
-
     App.Vent.trigger('changeSlide', {
       direction: $(event.target).data('slide')
     });
