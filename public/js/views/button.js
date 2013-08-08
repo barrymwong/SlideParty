@@ -28,7 +28,7 @@ var ButtonView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.attr({id: this.cid}).append('Be the first to like this slide!');
+    this.$el.attr({id: this.cid}).append('Like Slide');
     return this;
   }
 });

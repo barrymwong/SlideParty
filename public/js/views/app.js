@@ -2,7 +2,6 @@ var AppView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    this.noHijack = true;
     App.Vent.on('appInit', this.appInit, this);
     App.Vent.on('hijack', this.doNotHijack, this);
     socket.emit('initLoad', {});
@@ -18,6 +17,7 @@ var AppView = Backbone.View.extend({
     this.slidesView = new SlidesView({
       collection: new SlidesCollection(App.slides)
     });
+
     this.render();
     App.mainRouter = new MainRouter();
     Backbone.history.start();
@@ -29,17 +29,23 @@ var AppView = Backbone.View.extend({
       });    
     }
 
-    if(data.isAdmin.hasOwnProperty('admin')) {
+    if(this.adminCheck()) {
+      $('body').removeClass('is-hijack');
+    } else {
+      $('body').addClass('is-hijack');
       App.Vent.trigger('hijack', {noHijack: false});
     }
 
-    twttr.widgets.load();
     App.Vent.trigger('updateVote', data.pollData);
   },
 
+  adminCheck: function() {
+    return /isAdmin/.test(document.cookie);
+  },
+
   doNotHijack: function(data) {
-    this.noHijack = data.noHijack;
-    if(this.noHijack) {
+    App.noHijack = data.noHijack;
+    if(this.adminCheck() || App.noHijack === true) {
       $('body').removeClass('is-hijack');
     } else {
       $('body').addClass('is-hijack');
@@ -47,10 +53,10 @@ var AppView = Backbone.View.extend({
   },
 
   keyUp: function(event) {
-    if(this.noHijack === false) {
+    // left 37, right 39
+    if(!this.adminCheck() || App.noHijack === false) {
       return false;
     }
-    // left 37, right 39
     if(event.keyCode === 37 || event.keyCode === 39){
       App.Vent.trigger('changeSlide', {
         direction: event.keyCode === 39 ? 'next': 'prev'
@@ -60,7 +66,7 @@ var AppView = Backbone.View.extend({
 
   nextPrevButtons: function(event) {
     event.preventDefault();
-    if(this.noHijack === false) {
+    if(!this.adminCheck() || App.noHijack === false) {
       return false;
     }
     App.Vent.trigger('changeSlide', {
@@ -83,6 +89,7 @@ var AppView = Backbone.View.extend({
   render: function() {
     this.$el.append(this.slidesView.render().el);
     this.renderNextPrevButtons();
+    this.$el.append('=====' + this.adminCheck());
     return this;
   }
 });

@@ -1,16 +1,11 @@
 var MainRouter = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'slides/:id': 'showSlides',
-    'login': 'login'
+    'slides/:id': 'showSlides'
   },
 
   home: function() {
     App.Vent.trigger('init');
-  },
-
-  login: function() {
-    console.log('----> Login');
   },
 
   showSlides: function(slideIndex) {

@@ -31,12 +31,6 @@
       "poll": "chart"
     },
     {
-      "sortID" : 3,
-      "title": "Say What??...Embed Tweets!",
-      "tweet": "<p>I fell off a 50ft ladder today... Luckily I was on the bottom step.</p>&mdash; Not Will Ferrell (@itsWillyFerrell) <a href=\"https://twitter.com/itsWillyFerrell/statuses/363717180824633344\">August 3, 2013</a>",
-      "poll": "vote"
-    },
-    {
       "sortID" : 2,
       "title": "Even add some D3!", 
       "d3": "d3-shape",

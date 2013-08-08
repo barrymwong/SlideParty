@@ -7,10 +7,6 @@ var express = require('express')
   , _und = require('underscore')
   , fs = require('fs');
 
-var slideData = {};
-var pollData = {};
-var isAdmin = {};
-
 //config for session
 var MemoryStore = express.session.MemoryStore;
 app.configure(function() {
@@ -27,12 +23,14 @@ app.configure(function() {
 });
 
 io.sockets.on('connection', function(socket) {
+  var slideData = {};
+  var pollData = {};
+  var isAdmin = {};
 
   var checkAuth = function(req, res, next) {
     if (!req.session.user_id) {
       res.redirect('/login');
     } else {
-      isAdmin[req.session.user_id] = true;
       next();
     }
   };
@@ -47,6 +45,11 @@ io.sockets.on('connection', function(socket) {
     return slideData;
   };
   getSlideData();
+
+  app.get('/', function (req, res) {
+    res.sendfile('./public/index.html');
+    //io.sockets.emit('hijackSuccess', {noHijack: false});
+  });
 
   app.get('/edit', checkAuth, function (req, res) {
     res.sendfile('./public/edit.html');
@@ -70,6 +73,8 @@ io.sockets.on('connection', function(socket) {
     var post = req.body;
     if (post.login.username === 'admin' && post.login.password === '1234') {
       req.session.user_id = 'admin';
+      res.cookie('isAdmin', 1000);
+      isAdmin['isAdmin'] = 1000;
       if(post.login.nav === 'new') {
         res.redirect('/edit');
       } else {
@@ -83,7 +88,8 @@ io.sockets.on('connection', function(socket) {
 
   app.get('/logout', function (req, res) {
     delete req.session.user_id;
-    isAdmin = {};
+    res.clearCookie('isAdmin');
+    isAdmin = {}
     io.sockets.emit('hijackSuccess', {noHijack: true});
     res.redirect('/login');
   });      

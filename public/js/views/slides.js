@@ -2,14 +2,18 @@ var SlidesView = Backbone.View.extend({
   className: 'slides',
 
   initialize: function() {
-    this.noHijack = true;
     this.currentSlideIndex = 1;
+    this.doNotHijack({noHijack: App.noHijack});
     App.Vent.on('init', this.hideAllButFirst, this);
     App.Vent.on('changeSlide', this.changeSlide, this);
     App.Vent.on('renderSingle', this.renderSingle, this);
     App.Vent.on('hijack', this.doNotHijack, this);
 
     this.transitionSpeed = 400;
+  },
+
+  doNotHijack: function(data) {
+    App.noHijack = data.noHijack;
   },
 
   hideAllButFirst: function() {
@@ -70,13 +74,13 @@ var SlidesView = Backbone.View.extend({
 
     // client sends to server
     if(slideIndex > 0 && slideIndex <= App.slides.length && slideIndex !== lastSlide) {
-      if(this.noHijack) {
-        socket.emit('direction', {direction: dir, slideIndex: slideIndex});
-      } else {
+      if(App.noHijack) {
         App.Vent.trigger('changeSlide', {
           slideIndex: slideIndex,
           direction: dir
         });
+      } else {
+        socket.emit('direction', {direction: dir, slideIndex: slideIndex});
       }
     }
   },

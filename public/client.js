@@ -24,7 +24,7 @@ socket.on('slideUpdateSuccess', function(data) {
 });
 
 socket.on('hijackSuccess', function(data) {
-  App.Vent.trigger('hijack', data);
+  App.Vent.trigger('hijack', data); // {noHijack: false}
 });
 
 socket.on('connect', function(data) {
