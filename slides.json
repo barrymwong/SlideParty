@@ -1,6 +1,9 @@
 {
   "slides" : [
     {
+      "home": true
+    },
+    {
       "title": "Welcome to SlideParty (BETA)",
       "shareLink": true,
       "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg"

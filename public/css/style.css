@@ -1,7 +1,7 @@
 body, h1 { font:20px helvetica,arial,sans-serif; margin:0; }
 body { overflow-y:scroll; overflow-x:hidden; }
 a {color: #0066CC;}
-h1 { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; padding:20px; margin:0;}
+h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; padding:20px; margin:0;}
 
 .slide { width:100%; text-align:center; background-color:#fff; display:none;}
 
@@ -11,8 +11,7 @@ h1 { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; paddin
 #next { right: 0px; }
 #prev { left: 0px; }
 
-.is-hijack .notice { display:inline; }
-.notice { display:none; position:fixed; bottom:0; left:0; background-color:#f3f3f3;}
+.notice { position:fixed; bottom:5px; left:5px; background-color:#f3f3f3;}
 
 .poll { position:fixed; top:0; right:0; padding:5px;}
 .poll button { font-size:16px; }

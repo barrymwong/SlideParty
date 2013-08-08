@@ -1,7 +1,12 @@
 var SlideView = Backbone.View.extend({
   className: 'slide',
 
+  templateHome: _.template($('#template-home').html()),
+
   render: function() {
+    if(this.model.get('home')) {
+      this.renderHome();
+    } 
     if(this.model.get('title')) {
       this.renderHeadline();
     } 
@@ -35,6 +40,13 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('login')) {
       this.renderLogin();
     }
+    return this;
+  },
+
+  renderHome: function() {
+    this.$el.attr('data-slide', this.cid).append(
+      this.templateHome(this.model.toJSON())
+    );
     return this;
   },
 
@@ -87,7 +99,7 @@ var SlideView = Backbone.View.extend({
 
   renderHeadline: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<header><h1>' + this.model.get('title') + '</h1></header>'
+      '<header><h1 class="title">' + this.model.get('title') + '</h1></header>'
     );
     return this;
   },

@@ -90,7 +90,7 @@ io.sockets.on('connection', function(socket) {
     isAdmin = {};
     res.clearCookie('isAdmin');
     io.sockets.emit('hijackSuccess', {noHijack: true});
-    res.redirect('/login');
+    res.redirect('/');
   });      
 
   socket.on('initLoad', function(data) {

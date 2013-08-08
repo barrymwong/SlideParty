@@ -30,14 +30,15 @@ mongoose.connection.once('open', function() {
     textBottom: String,
     shareLink: Boolean,
     html: String,
-    login: String
+    login: String,
+    home: Boolean
   }, {
     collection: collection
   });
 
   exports.Slide = mongoose.model(collection, slideSchema);
 
-  //exports.Slide.find({}).remove();
+  exports.Slide.find({}).remove();
   exports.Slide.count({}, function(err, count) {
     if(count === 0) {
       _und.each(json.slides, function(value, index) {
