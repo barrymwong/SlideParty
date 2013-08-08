@@ -31,6 +31,7 @@ var AppView = Backbone.View.extend({
 
     if(this.adminCheck()) {
       $('body').removeClass('is-hijack');
+      App.Vent.trigger('hijack', {noHijack: true});
     } else {
       $('body').addClass('is-hijack');
       App.Vent.trigger('hijack', {noHijack: false});
@@ -45,6 +46,7 @@ var AppView = Backbone.View.extend({
 
   doNotHijack: function(data) {
     App.noHijack = data.noHijack;
+    console.log('App.noHijack--->', App.noHijack);
     if(this.adminCheck() || App.noHijack === true) {
       $('body').removeClass('is-hijack');
     } else {
@@ -54,7 +56,7 @@ var AppView = Backbone.View.extend({
 
   keyUp: function(event) {
     // left 37, right 39
-    if(!this.adminCheck() || App.noHijack === false) {
+    if(!this.adminCheck() && App.noHijack === false) {
       return false;
     }
     if(event.keyCode === 37 || event.keyCode === 39){
@@ -66,7 +68,7 @@ var AppView = Backbone.View.extend({
 
   nextPrevButtons: function(event) {
     event.preventDefault();
-    if(!this.adminCheck() || App.noHijack === false) {
+    if(!this.adminCheck() && App.noHijack === false) {
       return false;
     }
     App.Vent.trigger('changeSlide', {

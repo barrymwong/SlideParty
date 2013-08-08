@@ -16,6 +16,10 @@ var SlidesView = Backbone.View.extend({
     App.noHijack = data.noHijack;
   },
 
+  adminCheck: function() {
+    return /isAdmin/.test(document.cookie);
+  },
+
   hideAllButFirst: function() {
     this.$el.children(':nth-child(n+2)').hide();
   },
@@ -74,7 +78,7 @@ var SlidesView = Backbone.View.extend({
 
     // client sends to server
     if(slideIndex > 0 && slideIndex <= App.slides.length && slideIndex !== lastSlide) {
-      if(App.noHijack) {
+      if(!this.adminCheck() && App.noHijack === true) {
         App.Vent.trigger('changeSlide', {
           slideIndex: slideIndex,
           direction: dir
