@@ -50,7 +50,8 @@ var SlideView = Backbone.View.extend({
       var loc = location.href;
       var address = loc.split('/');
       this.$el.attr('data-slide', this.cid).append(
-        '<p>Share Slide: <a href="' + loc + '">'+ address[2] +'</a></p>'
+        '<p>Share Slide: <a href="' + loc + '">'+ address[2] +'</a> | ' +
+        '<a href="/login">Login</a></p>'
       );
     }
     return this;

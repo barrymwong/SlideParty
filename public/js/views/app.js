@@ -29,7 +29,7 @@ var AppView = Backbone.View.extend({
       });    
     }
 
-    if(this.adminCheck()) {
+    if(this.adminCheck() || Object.keys(data.isAdmin).length === 0) {
       $('body').removeClass('is-hijack');
       App.Vent.trigger('hijack', {noHijack: true});
     } else {
@@ -46,7 +46,6 @@ var AppView = Backbone.View.extend({
 
   doNotHijack: function(data) {
     App.noHijack = data.noHijack;
-    console.log('App.noHijack--->', App.noHijack);
     if(this.adminCheck() || App.noHijack === true) {
       $('body').removeClass('is-hijack');
     } else {
@@ -91,7 +90,7 @@ var AppView = Backbone.View.extend({
   render: function() {
     this.$el.append(this.slidesView.render().el);
     this.renderNextPrevButtons();
-    this.$el.append('=====' + this.adminCheck());
+    this.$el.append('<div class="notice">Live Presentation Mode: On</div>');
     return this;
   }
 });
