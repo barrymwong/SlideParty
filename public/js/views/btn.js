@@ -13,7 +13,7 @@ Spty.Views.Btn = Backbone.View.extend({
   onVote: function() {
     var data = {};
     data[this.cid] = 1;
-    socket.emit('vote', data);
+    Spty.socket.emit('vote', data);
     return this;
   },
 

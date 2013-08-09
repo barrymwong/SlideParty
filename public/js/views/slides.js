@@ -8,7 +8,6 @@ Spty.Views.Slides = Backbone.View.extend({
     Spty.Vent.on('changeSlide', this.changeSlide, this);
     Spty.Vent.on('renderSingle', this.renderSingle, this);
     Spty.Vent.on('hijack', this.doNotHijack, this);
-
     this.transitionSpeed = 400;
   },
 
@@ -27,10 +26,6 @@ Spty.Views.Slides = Backbone.View.extend({
   changeSlide: function(options) {
     var newSlide,
         slides = this.$el.children();
-        
-    if(twttr) {
-      twttr.widgets.load(); 
-    }
 
     if(options.slideIndex) {
       this.currentSlideIndex = +options.slideIndex;
@@ -88,7 +83,7 @@ Spty.Views.Slides = Backbone.View.extend({
           direction: dir
         });
       } else {
-        socket.emit('direction', {direction: dir, slideIndex: slideIndex});
+        Spty.socket.emit('direction', {direction: dir, slideIndex: slideIndex});
       }
     }
   },

@@ -4,7 +4,7 @@ Spty.Views.App = Backbone.View.extend({
   initialize: function() {
     Spty.Vent.on('appInit', this.appInit, this);
     Spty.Vent.on('hijack', this.doNotHijack, this);
-    socket.emit('initLoad', {});
+    Spty.socket.emit('initLoad', {});
   },
 
   events: {
@@ -17,7 +17,6 @@ Spty.Views.App = Backbone.View.extend({
     this.slidesView = new Spty.Views.Slides({
       collection: new Spty.Collections.Slides(Spty.slides)
     });
-
     this.render();
     Spty.mainRouter = new Spty.Routers.Main();
     Backbone.history.start();
@@ -36,6 +35,7 @@ Spty.Views.App = Backbone.View.extend({
     }
 
     Spty.Vent.trigger('updateVote', data.pollData);
+    twttr.widgets.load(); 
   },
 
   adminCheck: function() {
@@ -87,7 +87,7 @@ Spty.Views.App = Backbone.View.extend({
   },
 
   getData: function() {
-    socket.emit('direction', {direction: 'next', slideIndex: 1});
+    Spty.socket.emit('direction', {direction: 'next', slideIndex: 1});
   },
 
   render: function() {
