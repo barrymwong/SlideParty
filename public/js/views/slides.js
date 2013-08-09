@@ -4,10 +4,10 @@ SPTY.Views.Slides = Backbone.View.extend({
   initialize: function() {
     this.currentSlideIndex = 1;
     this.doNotHijack({noHijack: SPTY.noHijack});
-    SPTY.Vent.on('init', this.hideAllButFirst, this);
-    SPTY.Vent.on('changeSlide', this.changeSlide, this);
-    SPTY.Vent.on('renderSingle', this.renderSingle, this);
-    SPTY.Vent.on('hijack', this.doNotHijack, this);
+    SPTY.Events.on('init', this.hideAllButFirst, this);
+    SPTY.Events.on('changeSlide', this.changeSlide, this);
+    SPTY.Events.on('renderSingle', this.renderSingle, this);
+    SPTY.Events.on('hijack', this.doNotHijack, this);
     this.transitionSpeed = 400;
   },
 
@@ -78,7 +78,7 @@ SPTY.Views.Slides = Backbone.View.extend({
     // client sends to server
     if(slideIndex > 0 && slideIndex <= SPTY.slides.length && slideIndex !== lastSlide) {
       if(!this.adminCheck() && SPTY.noHijack === true) {
-        SPTY.Vent.trigger('changeSlide', {
+        SPTY.Events.trigger('changeSlide', {
           slideIndex: slideIndex,
           direction: dir
         });

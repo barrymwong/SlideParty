@@ -5,12 +5,12 @@ SPTY.Routers.Main = Backbone.Router.extend({
   },
 
   home: function() {
-    SPTY.Vent.trigger('init');
+    SPTY.Events.trigger('init');
   },
 
   showSlides: function(slideIndex) {
     if(slideIndex <= SPTY.slides.length) {
-      SPTY.Vent.trigger('changeSlide', {
+      SPTY.Events.trigger('changeSlide', {
         slideIndex: slideIndex,
         direction: 'next'
       });

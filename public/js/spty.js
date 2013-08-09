@@ -3,7 +3,7 @@ var SPTY = _.extend({
   Views: {},
   Collections: {},
   Routers: {},
-  Vent: _.extend({}, Backbone.Events),
+  Events: _.extend({}, Backbone.Events),
   slides: [
     {title: 'SlideParty'}
   ],

@@ -2,8 +2,8 @@ SPTY.Views.App = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    SPTY.Vent.on('appInit', this.appInit, this);
-    SPTY.Vent.on('hijack', this.doNotHijack, this);
+    SPTY.Events.on('appInit', this.appInit, this);
+    SPTY.Events.on('hijack', this.doNotHijack, this);
     SPTY.socket.emit('initLoad', {});
   },
 
@@ -22,19 +22,19 @@ SPTY.Views.App = Backbone.View.extend({
     Backbone.history.start();
 
     if(!location.hash) {
-      SPTY.Vent.trigger('changeSlide', {
+      SPTY.Events.trigger('changeSlide', {
         slideIndex: 1,
         direction: 'next'
       });    
     }
 
     if(this.adminCheck() || Object.keys(data.isAdmin).length === 0) {
-      SPTY.Vent.trigger('hijack', {noHijack: true});
+      SPTY.Events.trigger('hijack', {noHijack: true});
     } else {
-      SPTY.Vent.trigger('hijack', {noHijack: false});
+      SPTY.Events.trigger('hijack', {noHijack: false});
     }
 
-    SPTY.Vent.trigger('updateVote', data.pollData);
+    SPTY.Events.trigger('updateVote', data.pollData);
     twttr.widgets.load(); 
   },
 
@@ -57,12 +57,11 @@ SPTY.Views.App = Backbone.View.extend({
   },
 
   keyUp: function(event) {
-    // left 37, right 39
     if(event.keyCode === 37 || event.keyCode === 39){
       if(!this.adminCheck() && SPTY.noHijack === false) {
         return false;
       }
-      SPTY.Vent.trigger('changeSlide', {
+      SPTY.Events.trigger('changeSlide', {
         direction: event.keyCode === 39 ? 'next': 'prev'
       });
     }
@@ -73,7 +72,7 @@ SPTY.Views.App = Backbone.View.extend({
     if(!this.adminCheck() && SPTY.noHijack === false) {
       return false;
     }
-    SPTY.Vent.trigger('changeSlide', {
+    SPTY.Events.trigger('changeSlide', {
       direction: $(event.target).data('slide')
     });
   },

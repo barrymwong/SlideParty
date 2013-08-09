@@ -5,8 +5,6 @@ var mongoose = require('mongoose'),
     domain = 'localhost',
     collection = 'slides';
 
-console.log('NODE_ENV-->', process.env.NODE_ENV);
-
 if(process.env.NODE_ENV === 'production') {
   mongoose.connect('mongodb://nodejitsu:ab9ddee52584485c5730a5744caf7d90@dharma.mongohq.com:10065/nodejitsudb85789971');
 } else {
@@ -32,7 +30,8 @@ mongoose.connection.once('open', function() {
     html: String,
     login: String,
     home: Boolean
-  }, {
+  },
+  {
     collection: collection
   });
 
@@ -52,7 +51,3 @@ mongoose.connection.once('open', function() {
     }
   });
 });
-
-
-
-

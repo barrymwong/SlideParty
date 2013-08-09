@@ -3,7 +3,7 @@ SPTY.Views.Btn = Backbone.View.extend({
 
   initialize: function() {
     this.className = this.cid;
-    SPTY.Vent.on('updateVote', this.updateVote, this);
+    SPTY.Events.on('updateVote', this.updateVote, this);
   },
 
   events: {
