@@ -31,5 +31,9 @@ var configHtml = {
   removePlugins: 'sourcearea'
 };
 
-CKEDITOR.inline( 'edit-title', configTitle );
-CKEDITOR.inline( 'edit-html', configHtml );
+try {
+  CKEDITOR.inline( 'edit-title', configTitle );
+  CKEDITOR.inline( 'edit-html', configHtml );
+} catch(e) {
+  console.log('hello');
+}

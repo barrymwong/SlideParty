@@ -5,6 +5,7 @@ h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; 
 .tal {text-align:left;}
 .slide { width:100%; text-align:center; background-color:#fff; display:none;}
 .slide ul li { list-style-type:disc; }
+.slide iframe.twitter-tweet { margin:10px auto !important; }
 .is-hijack #next,
 .is-hijack #prev { display:none !important; }
 #next, #prev { position:fixed; top:45%; width:42px; height:100px; opacity:0.5; }
@@ -21,15 +22,10 @@ h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; 
 #page-home .button-demo {font-size:30px;}
 #page-edit {font-size:16px;}
 .page { border:1px solid #ccc; padding:10px; }
-.d3-shape rect { fill: none; pointer-events: all; }
-.d3-shape .node { fill: #000; }
-.d3-shape .cursor { fill: none; stroke: brown; pointer-events: none; }
-.d3-shape .link { stroke: #999; }
 h1[contenteditable=true], 
 div[contenteditable=true] { cursor:pointer; border:1px solid transparent; }
 h1[contenteditable=true]:hover, 
 div[contenteditable=true]:hover { border:1px dashed red; }
-iframe.twitter-tweet { margin:10px auto !important; }
 @media screen and (max-width: 768px) {
   h1.title { font-size:24px; margin-bottom:0; } 
   body { font-size:18px; }
