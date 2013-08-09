@@ -1,4 +1,4 @@
-Spty.Models.Btn = Backbone.Model.extend({
+SPTY.Models.Btn = Backbone.Model.extend({
   defaults: {
     label: 'button'
   }

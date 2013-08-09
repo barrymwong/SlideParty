@@ -1,9 +1,9 @@
-Spty.Views.Btn = Backbone.View.extend({
+SPTY.Views.Btn = Backbone.View.extend({
   tagName: 'button',
 
   initialize: function() {
     this.className = this.cid;
-    Spty.Vent.on('updateVote', this.updateVote, this);
+    SPTY.Vent.on('updateVote', this.updateVote, this);
   },
 
   events: {
@@ -13,7 +13,7 @@ Spty.Views.Btn = Backbone.View.extend({
   onVote: function() {
     var data = {};
     data[this.cid] = 1;
-    Spty.socket.emit('vote', data);
+    SPTY.socket.emit('vote', data);
     return this;
   },
 

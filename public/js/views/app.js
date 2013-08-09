@@ -1,10 +1,10 @@
-Spty.Views.App = Backbone.View.extend({
+SPTY.Views.App = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    Spty.Vent.on('appInit', this.appInit, this);
-    Spty.Vent.on('hijack', this.doNotHijack, this);
-    Spty.socket.emit('initLoad', {});
+    SPTY.Vent.on('appInit', this.appInit, this);
+    SPTY.Vent.on('hijack', this.doNotHijack, this);
+    SPTY.socket.emit('initLoad', {});
   },
 
   events: {
@@ -13,28 +13,28 @@ Spty.Views.App = Backbone.View.extend({
   },
 
   appInit: function(data) {
-    Spty.slides = data.slideData;
-    this.slidesView = new Spty.Views.Slides({
-      collection: new Spty.Collections.Slides(Spty.slides)
+    SPTY.slides = data.slideData;
+    this.slidesView = new SPTY.Views.Slides({
+      collection: new SPTY.Collections.Slides(SPTY.slides)
     });
     this.render();
-    Spty.mainRouter = new Spty.Routers.Main();
+    SPTY.mainRouter = new SPTY.Routers.Main();
     Backbone.history.start();
 
     if(!location.hash) {
-      Spty.Vent.trigger('changeSlide', {
+      SPTY.Vent.trigger('changeSlide', {
         slideIndex: 1,
         direction: 'next'
       });    
     }
 
     if(this.adminCheck() || Object.keys(data.isAdmin).length === 0) {
-      Spty.Vent.trigger('hijack', {noHijack: true});
+      SPTY.Vent.trigger('hijack', {noHijack: true});
     } else {
-      Spty.Vent.trigger('hijack', {noHijack: false});
+      SPTY.Vent.trigger('hijack', {noHijack: false});
     }
 
-    Spty.Vent.trigger('updateVote', data.pollData);
+    SPTY.Vent.trigger('updateVote', data.pollData);
     twttr.widgets.load(); 
   },
 
@@ -43,11 +43,11 @@ Spty.Views.App = Backbone.View.extend({
   },
 
   doNotHijack: function(data) {
-    Spty.noHijack = data.noHijack;
+    SPTY.noHijack = data.noHijack;
     if(this.adminCheck()) {
       $('.notice').html('Presenter | <a href="/edit">New Slide</a> | <a href="/logout">Logout</a>');
       $('body').removeClass('is-hijack');
-    } else if (Spty.noHijack === true) {
+    } else if (SPTY.noHijack === true) {
       $('.notice').html('<a href="/login">Presenter Login</a>');
       $('body').removeClass('is-hijack');
     } else {
@@ -59,10 +59,10 @@ Spty.Views.App = Backbone.View.extend({
   keyUp: function(event) {
     // left 37, right 39
     if(event.keyCode === 37 || event.keyCode === 39){
-      if(!this.adminCheck() && Spty.noHijack === false) {
+      if(!this.adminCheck() && SPTY.noHijack === false) {
         return false;
       }
-      Spty.Vent.trigger('changeSlide', {
+      SPTY.Vent.trigger('changeSlide', {
         direction: event.keyCode === 39 ? 'next': 'prev'
       });
     }
@@ -70,10 +70,10 @@ Spty.Views.App = Backbone.View.extend({
 
   nextPrevButtons: function(event) {
     event.preventDefault();
-    if(!this.adminCheck() && Spty.noHijack === false) {
+    if(!this.adminCheck() && SPTY.noHijack === false) {
       return false;
     }
-    Spty.Vent.trigger('changeSlide', {
+    SPTY.Vent.trigger('changeSlide', {
       direction: $(event.target).data('slide')
     });
   },
@@ -87,7 +87,7 @@ Spty.Views.App = Backbone.View.extend({
   },
 
   getData: function() {
-    Spty.socket.emit('direction', {direction: 'next', slideIndex: 1});
+    SPTY.socket.emit('direction', {direction: 'next', slideIndex: 1});
   },
 
   render: function() {

@@ -1,4 +1,4 @@
-Spty.Models.Poll = Backbone.Model.extend({
+SPTY.Models.Poll = Backbone.Model.extend({
   defaults: {
     poll: 'vote'
   }

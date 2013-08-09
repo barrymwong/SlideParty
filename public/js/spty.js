@@ -1,4 +1,4 @@
-var Spty = _.extend({
+var SPTY = _.extend({
   Models: {},
   Views: {},
   Collections: {},
