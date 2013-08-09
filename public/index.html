@@ -51,23 +51,21 @@
   <script src="js/lib/underscore-1.5.1.min.js"></script>
   <script src="js/lib/backbone-1.0.0.min.js"></script>
   <script src="js/lib/d3-v3.min.js" charset="utf-8"></script>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+  <script>var twttr;</script>
+  <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/client.js"></script>
-
+  <script src="js/spty.js"></script>
   <script src="js/router.js"></script>
-  <script src="js/models/button.js"></script>
+  <script src="js/models/btn.js"></script>
   <script src="js/models/poll.js"></script>
   <script src="js/models/slide.js"></script>
   <script src="js/collections/slides.js"></script>
-
-  <script src="js/views/button.js"></script>
+  <script src="js/views/btn.js"></script>
   <script src="js/views/poll.js"></script>
   <script src="js/views/slide.js"></script>
   <script src="js/views/slides.js"></script>
   <script src="js/views/app.js"></script>
-
-  <script src="js/slideparty.js"></script>
+  <script>Spty.appView = new Spty.Views.App();</script>
 </body>
 </html>

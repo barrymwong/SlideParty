@@ -1,8 +1,13 @@
-window.App = {
+var Spty = _.extend({
+  Models: {},
+  Views: {},
+  Collections: {},
+  Routers: {},
   Vent: _.extend({}, Backbone.Events),
   slides: [
     {title: 'SlideParty'}
   ],
   noHijack: true
-};
-var appView = new AppView();
+});
+
+

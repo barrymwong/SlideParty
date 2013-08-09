@@ -1,4 +1,4 @@
-var SlideView = Backbone.View.extend({
+Spty.Views.Slide = Backbone.View.extend({
   className: 'slide',
 
   templateHome: _.template($('#template-home').html()),
@@ -89,7 +89,7 @@ var SlideView = Backbone.View.extend({
 
   renderPoll: function() {
     var data = {poll: this.model.get('poll')};
-    var pollView = new PollView({model: new PollModel(data)});
+    var pollView = new Spty.Views.Poll({model: new Spty.Models.Poll(data)});
     this.$el.append(pollView.render().el);
     return this;
   },

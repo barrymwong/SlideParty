@@ -1,9 +1,9 @@
-var ButtonView = Backbone.View.extend({
+Spty.Views.Btn = Backbone.View.extend({
   tagName: 'button',
 
   initialize: function() {
     this.className = this.cid;
-    App.Vent.on('updateVote', this.updateVote, this);
+    Spty.Vent.on('updateVote', this.updateVote, this);
   },
 
   events: {

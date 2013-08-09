@@ -1,16 +1,16 @@
-var MainRouter = Backbone.Router.extend({
+Spty.Routers.Main = Backbone.Router.extend({
   routes: {
     '': 'home',
     'slides/:id': 'showSlides'
   },
 
   home: function() {
-    App.Vent.trigger('init');
+    Spty.Vent.trigger('init');
   },
 
   showSlides: function(slideIndex) {
-    if(slideIndex <= App.slides.length) {
-      App.Vent.trigger('changeSlide', {
+    if(slideIndex <= Spty.slides.length) {
+      Spty.Vent.trigger('changeSlide', {
         slideIndex: slideIndex,
         direction: 'next'
       });

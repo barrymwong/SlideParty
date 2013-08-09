@@ -51,7 +51,6 @@ mongoose.connection.once('open', function() {
       });
     }
   });
-
 });
 
 

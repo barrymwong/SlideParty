@@ -1,2 +1,1 @@
-var SlideModel = Backbone.Model.extend({
-});
+Spty.Models.Slide = Backbone.Model.extend({});

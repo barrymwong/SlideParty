@@ -1,4 +1,4 @@
-var PollView = Backbone.View.extend({
+Spty.Views.Poll = Backbone.View.extend({
   className: 'poll',
 
   render: function() {
@@ -15,22 +15,8 @@ var PollView = Backbone.View.extend({
   },
 
   renderVote: function() {
-    var buttonView = new ButtonView({model: new ButtonModel()});
-
-    this.$el.attr('data-poll', this.cid).append(buttonView.render().el);
-    return this;
-  },
-
-  renderChart: function() {
-    var buttonView = new ButtonView({model: new ButtonModel()});
-
-    this.$el.attr('data-poll', this.cid).append(buttonView.render().el);
-    return this;
-  },
-
-  renderText: function() {
-    var buttonView = new ButtonView({model: new ButtonModel()});
-
+    var buttonView = new Spty.Views.Btn({model: new Spty.Models.Btn()});
+    
     this.$el.attr('data-poll', this.cid).append(buttonView.render().el);
     return this;
   }
