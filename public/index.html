@@ -22,8 +22,29 @@
 <body>
   <script id="template-home" type="text/template">
     <div id="page-home">
-      <h1>SlideParty (BETA)</h1>
-      <p>A synchronous slide presentation across multiple devices</p>
+      <div class="container">
+        <div class="sixteen columns">
+          <img class="logo" src="images/slideparty.png">
+          <h1 class="home-title">SlideParty</h1> 
+          <div class="sixteen columns">
+            <a href="#slides/2" class="button button-demo">Check it out!</a>
+          </div>
+          <div class="five columns alpha">
+            <p>Share SlideParty with audience devices</p>
+          </div>
+          <div class="six columns">
+            <p>Use your device as the remote control for all screens</p>
+          </div>
+          <div class="five columns omega">
+            <p>Get feedback from your viewers</p>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        Presenter:
+        <a href="/login" class="button">Login</a>
+        <a href="/login" class="button">Sign Up</a>
+      </div>
     </div>
   </script>
   <script src="js/lib/jquery-2.0.3.min.js"></script>
@@ -33,13 +54,12 @@
   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="client.js"></script>
+  <script src="js/client.js"></script>
 
   <script src="js/router.js"></script>
   <script src="js/models/button.js"></script>
   <script src="js/models/poll.js"></script>
   <script src="js/models/slide.js"></script>
-  <script src="js/models/page.js"></script>
   <script src="js/collections/slides.js"></script>
 
   <script src="js/views/button.js"></script>

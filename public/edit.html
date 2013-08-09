@@ -21,20 +21,32 @@
 </head>
 <body>
   <div class="slides">
-    <div id="page" class="slide" style="display:block">
+    <div class="slide" style="display:block">
       <form method="post" action="/edit">
-        <h1 data-edit="data-title" id="edit-title" data-placeholder="(new slide title)" contenteditable="true">(new slide title)</h1>
+        <h1 class="title" data-edit="data-title" id="edit-title" data-placeholder="(new slide title)" contenteditable="true">(new slide title)</h1>
         <div data-edit="data-html" id="edit-html" data-placeholder="(edit content)" contenteditable="true">(edit content)</div>
         <input id="data-title" name="edit[title]" type="hidden">
         <input id="data-html" name="edit[html]" type="hidden">
-        <label><input type="checkbox" name="edit[poll]" value="vote"> Display Like button</label>
-        <button type="submit">Add new slide</button>
+        <div class="container">
+          <div class="sixteen columns tal">
+            <div id="page-edit" class="page">
+              <p>Modify text above to add a new slide to the presentation. (Note: Title is required. Delete content text to leave blank.)</p>
+              <p>Embed Youtube Code: <input name="edit[youtube]" placeholder="(optional)" type="text"></p>
+              <p>Embed Twitter Code: <input name="edit[tweet]" placeholder="(optional)" type="text"></p>
+              <p><label><input type="checkbox" name="edit[poll]" value="vote"> Display Like button</label></p>
+              <p>
+                <button type="submit">Add new slide</button> 
+                <a href="/">Cancel</a>
+              </p>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>
   <script src="js/lib/jquery-2.0.3.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="client.js"></script>
+  <script src="js/client.js"></script>
   <script src="js/lib/ckeditor/ckeditor.js"></script>
   <script src="js/editorConfig.js"></script>
   <script src="js/editor.js"></script>

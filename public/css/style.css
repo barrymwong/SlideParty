@@ -1,51 +1,39 @@
-body, h1 { font:20px helvetica,arial,sans-serif; margin:0; }
+body, h1 { font:30px helvetica,arial,sans-serif; margin:0; }
 body { overflow-y:scroll; overflow-x:hidden; }
 a {color: #0066CC;}
-h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; padding:20px; margin:0;}
-
+h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; padding:10px; margin:0 0 10px 0;}
+.tal {text-align:left;}
 .slide { width:100%; text-align:center; background-color:#fff; display:none;}
-
+.slide ul li { list-style-type:disc; }
 .is-hijack #next,
 .is-hijack #prev { display:none !important; }
-#next, #prev { position:fixed; top:50%; font-size: 30px; color:green; background-color:#fff;}
-#next { right: 0px; }
-#prev { left: 0px; }
-
-.notice { position:fixed; bottom:5px; left:5px; background-color:#f3f3f3;}
-
-.poll { position:fixed; top:0; right:0; padding:5px;}
-.poll button { font-size:16px; }
-
-rect {
-  fill: none;
-  pointer-events: all;
-}
-
-.node {
-  fill: #000;
-}
-
-.cursor {
-  fill: none;
-  stroke: brown;
-  pointer-events: none;
-}
-
-.link {
-  stroke: #999;
-}
-
+#next, #prev { position:fixed; top:45%; width:42px; height:100px; opacity:0.5; }
+#next { right: 0px; background:url(../images/right.png) no-repeat 0 0; }
+#prev { left: 0px; background:url(../images/left.png) no-repeat 0 0; }
+.notice { font-size:14px; position:fixed; bottom:5px; left:5px; background-color:#f3f3f3; border-radius:3px; padding:5px;}
+.poll { position:fixed; top:0; right:0; padding:5px; }
+.poll button { margin: 0; font-size:20px ;}
+#page-home {padding-top:20px;}
+#page-home h1 { font:60px 'Architects Daughter',helvetica,sans-serif; color:#f05a28; }
+#page-home ol { text-align:left;}
+#page-home .logo { max-width:350px; }
+#page-home .buttons { position:fixed; top:5px; right:5px; font-size:16px;}
+#page-home .button-demo {font-size:30px;}
+#page-edit {font-size:16px;}
+.page { border:1px solid #ccc; padding:10px; }
+.d3-shape rect { fill: none; pointer-events: all; }
+.d3-shape .node { fill: #000; }
+.d3-shape .cursor { fill: none; stroke: brown; pointer-events: none; }
+.d3-shape .link { stroke: #999; }
 h1[contenteditable=true], 
-div[contenteditable=true] 
-{ cursor:pointer; border:1px solid transparent; }
-
+div[contenteditable=true] { cursor:pointer; border:1px solid transparent; }
 h1[contenteditable=true]:hover, 
-div[contenteditable=true]:hover
-{ border:1px dashed red; }
-
+div[contenteditable=true]:hover { border:1px dashed red; }
+iframe.twitter-tweet { margin:10px auto !important; }
 @media screen and (max-width: 768px) {
-  .h1 { font-size:24px; }
+  h1.title { font-size:24px; margin-bottom:0; } 
   body { font-size:18px; }
   .slide img { width:100%; height:auto; }
   .svg {width:100%;}
+  .poll { bottom:0; top:inherit; }
 }

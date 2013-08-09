@@ -30,10 +30,8 @@ var AppView = Backbone.View.extend({
     }
 
     if(this.adminCheck() || Object.keys(data.isAdmin).length === 0) {
-      $('body').removeClass('is-hijack');
       App.Vent.trigger('hijack', {noHijack: true});
     } else {
-      $('body').addClass('is-hijack');
       App.Vent.trigger('hijack', {noHijack: false});
     }
 
@@ -47,10 +45,10 @@ var AppView = Backbone.View.extend({
   doNotHijack: function(data) {
     App.noHijack = data.noHijack;
     if(this.adminCheck()) {
-      $('.notice').html('Presenter | <a href="/logout">Logout</a>');
+      $('.notice').html('Presenter | <a href="/edit">New Slide</a> | <a href="/logout">Logout</a>');
       $('body').removeClass('is-hijack');
     } else if (App.noHijack === true) {
-      $('.notice').html('<a href="/login">Login</a>');
+      $('.notice').html('<a href="/login">Presenter Login</a>');
       $('body').removeClass('is-hijack');
     } else {
       $('.notice').html('Live Presentation Mode: On');
@@ -82,8 +80,8 @@ var AppView = Backbone.View.extend({
 
   renderNextPrevButtons: function() {
     this.$el.append(
-      '<a id="prev" data-slide="prev" class="button-slide" href="#">Prev</a>' +
-      '<a id="next" data-slide="next" class="button-slide" href="#">Next</a>'
+      '<a id="prev" data-slide="prev" class="button-slide" href="#"></a>' +
+      '<a id="next" data-slide="next" class="button-slide" href="#"></a>'
     );
     return this;
   },

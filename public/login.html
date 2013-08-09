@@ -21,17 +21,22 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <form method="POST" action="login/">
-  	<h1>Admin Login</h1>
-    <select id="nav" name="login[nav]">
-      <optgroup label="Go to page:">
-        <option value="slides">Slides</option>
-        <option value="new">Create new slide</option>
-      <optgroup>
-    </select>
-    <input id="username" name="login[username]" type="text" placeholder="Username">
-    <input id="password" name="login[password]" type="password" placeholder="Password">
-    <button>Submit</button>
-  </form>
+  <div class="container">
+    <div class="page sixteen columns alpha omega">
+      <form method="POST" action="login/">
+        <p>Note: SlideParty is a demo. You cannot create a new account.</p>
+        <p>Presenter Login:</p>
+        <input id="username" name="login[username]" type="text" placeholder="Username" value="admin">
+        <input id="password" name="login[password]" type="password" placeholder="Password" value="1234">
+        <select id="nav" name="login[nav]">
+          <optgroup label="Go to page:">
+            <option value="slides">Slides</option>
+            <option value="new">Create new slide</option>
+          <optgroup>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

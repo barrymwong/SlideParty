@@ -10,6 +10,9 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('title')) {
       this.renderHeadline();
     } 
+    if(this.model.get('html')) {
+      this.renderHTML();
+    } 
     if(this.model.get('shareLink')) {
       this.renderShareLink();
     } 
@@ -31,14 +34,8 @@ var SlideView = Backbone.View.extend({
     if(this.model.get('poll')) {
       this.renderPoll();
     }
-    if(this.model.get('html')) {
-      this.renderHTML();
-    } 
     if(this.model.get('textBottom')) {
       this.renderTextBottom();
-    } 
-    if(this.model.get('login')) {
-      this.renderLogin();
     }
     return this;
   },
@@ -121,14 +118,14 @@ var SlideView = Backbone.View.extend({
 
   renderYoutube: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<iframe width="480" height="360" src="' + this.model.get('youtube') + '" frameborder="0" allowfullscreen></iframe>'
+      this.model.get('youtube')
     );
     return this;
   },
 
   renderTweet: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<blockquote class="twitter-tweet" align="center">' + this.model.get('tweet') + '</blockquote>'
+      this.model.get('tweet')
     );
     return this;
   }

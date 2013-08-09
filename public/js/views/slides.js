@@ -27,6 +27,10 @@ var SlidesView = Backbone.View.extend({
   changeSlide: function(options) {
     var newSlide,
         slides = this.$el.children();
+        
+    if(twttr) {
+      twttr.widgets.load(); 
+    }
 
     if(options.slideIndex) {
       this.currentSlideIndex = +options.slideIndex;
