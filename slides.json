@@ -5,7 +5,6 @@
     },
     {
       "title": "Welcome to SlideParty (BETA)",
-      "shareLink": true,
       "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg"
     },
     {
@@ -15,22 +14,6 @@
     {
       "title": "Control slides remotely with other devices",
       "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg"
-    },
-    {
-      "title": "Do you LIKE this?",
-      "textTop": "Please give me your feedback!",
-      "poll": "vote"
-    },
-    {
-      "title": "Share your favorite Youtube videos", 
-      "youtube": "//www.youtube.com/embed/qybUFnY7Y8w",
-      "textBottom": "OK Go - This Too Shall Pass",
-      "poll": "chart"
-    },
-    {
-      "title": "Even add some D3!", 
-      "d3": "d3-shape",
-      "poll": "vote"
     },
     {
       "title": "Thank You", 
