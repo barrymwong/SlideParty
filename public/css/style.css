@@ -2,11 +2,11 @@ body, h1, h2, h3 { font-family: helvetica,arial,sans-serif; margin:0; padding:0;
 h1 { font-size: 40px; }
 body { overflow-y:scroll; overflow-x:hidden; }
 a {color: #0066CC;}
-h1.title { font:36px Monda,sans-serif; padding:10px 20px; text-align:center; border-top:10px solid #f3f3f3;}
+h1.title { font:36px Monda,sans-serif; padding:10px 20px; text-align:center; }
 .tal { text-align:left; }
 .tac { text-align:center; }
 .marker { background-color:yellow; }
-.slide { width:100%; background-color:#fff; display:none; padding-bottom:50px; }
+.slide { width:100%; background-color:#fff; display:none; padding-bottom:50px; border-top:10px solid #f3f3f3; }
 .slide ul li { list-style-type:disc; }
 .slide iframe.twitter-tweet { margin:10px auto !important; }
 .slide .content { text-align:center; font-size:30px; margin:20px; }
@@ -36,10 +36,48 @@ h1[contenteditable=true],
 div[contenteditable=true] { cursor:pointer; border:1px solid transparent; }
 h1[contenteditable=true]:hover, 
 div[contenteditable=true]:hover { border:1px dashed red; }
+
+.poll {
+  -webkit-animation: slidein 1s;
+  -moz-animation: slidein 1s;
+  animation: slidein 1s;
+}
+
+@-webkit-keyframes slidein {
+  0% { margin-top: -100%; opacity: 0; }
+  100% { margin-top: 0%; opacity: 1; }
+}
+@-moz-keyframes slidein {
+  0% { margin-top: -100%; opacity: 0; }
+  100% { margin-top: 0%; opacity: 1; }
+}
+@keyframes slidein {
+  0% { margin-top: -100%; opacity: 0; }
+  100% { margin-top: 0%; opacity: 1; }
+}
+
 @media screen and (max-width: 768px) {
   h1.title { font-size:24px; margin-bottom:0; } 
   body { font-size:18px; }
   .slide img { width:100%; height:auto; }
   .svg {width:100%;}
   .poll { bottom:0; top:inherit; }
+  @-webkit-keyframes slidein {
+    0% { margin-bottom: -100%; opacity: 0; }
+    100% { margin-bottom: 0%; opacity: 1; }
+  }
+  @-moz-keyframes slidein {
+    0% { margin-bottom: -100%; opacity: 0; }
+    100% { margin-bottom: 0%; opacity: 1; }
+  }
+  @keyframes slidein {
+    0% { margin-bottom: -100%; opacity: 0; }
+    100% { margin-bottom: 0%; opacity: 1; }
+  }
 }
+
+
+
+
+
+
