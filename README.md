@@ -1,13 +1,5 @@
-```
-  ____    _   _       _          ____                   _           
- / ___|  | | (_)   __| |   ___  |  _ \    __ _   _ __  | |_   _   _ 
- \___ \  | | | |  / _` |  / _ \ | |_) |  / _` | | '__| | __| | | | |
-  ___) | | | | | | (_| | |  __/ |  __/  | (_| | | |    | |_  | |_| |
- |____/  |_| |_|  \__,_|  \___| |_|      \__,_| |_|     \__|  \__, |
-                                                              |___/ 
-```
+#SlideParty
+A slide presentation you can share with other devices. Use your own device to control what the audience sees in their screens realtime! 
+http://slideparty.jit.su
 
-
-
-
-
+![alt tag](https://raw.github.com/barrymwong/SlideParty/master/public/images/slideparty_sm.png)

@@ -43,15 +43,6 @@ div[contenteditable=true]:hover { border:1px dashed red; }
   animation: poll 2s;
 }
 
-.slide-in,
-.slide-out { position:absolute; }
-.slide-in {
-  -webkit-animation: slide-in 0.5s;
-}
-.slide-out {
-  -webkit-animation: slide-out 0.5s;
-}
-
 @-webkit-keyframes poll {
   0% { margin-top: -100%; opacity: 0; }
   100% { margin-top: 0%; opacity: 1; }
@@ -63,6 +54,16 @@ div[contenteditable=true]:hover { border:1px dashed red; }
 @keyframes poll {
   0% { margin-top: -100%; opacity: 0; }
   100% { margin-top: 0%; opacity: 1; }
+}
+
+.slide-in,
+.slide-out { position:absolute; }
+
+.not-touch .slide-in {
+  -webkit-animation: slide-in 0.5s;
+}
+.not-touch .slide-out {
+  -webkit-animation: slide-out 0.5s;
 }
 
 @-webkit-keyframes slide-in {

@@ -2,6 +2,7 @@ SPTY.Views.App = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
+    this.isTouchDevice();
     SPTY.Events.on('appInit', this.appInit, this);
     SPTY.Events.on('hijack', this.doNotHijack, this);
     SPTY.socket.emit('initLoad', {});
@@ -36,6 +37,15 @@ SPTY.Views.App = Backbone.View.extend({
 
     SPTY.Events.trigger('updateVote', data.pollData);
     twttr.widgets.load(); 
+  },
+
+  isTouchDevice: function() {
+    var isTouch = !!('ontouchstart' in window) || !!('onmsgesturechange' in window);
+    if(isTouch) {
+      $('html').addClass('is-touch');
+    } else {
+      $('html').addClass('not-touch');
+    }
   },
 
   adminCheck: function() {
