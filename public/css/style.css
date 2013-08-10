@@ -42,13 +42,13 @@ div[contenteditable=true]:hover { border:1px dashed red; }
 }
 
 .poll {
-  -webkit-animation: poll 1s;
-  -moz-animation: poll 1s;
-  animation: poll 1s;
+  -webkit-animation: poll 2s;
+  -moz-animation: poll 2s;
+  animation: poll 2s;
 }
 
 .slide-in,
-.slide-out {position:absolute;}
+.slide-out { position:absolute; }
 
 .slide-in {
   -webkit-animation: slide-in 0.5s;
