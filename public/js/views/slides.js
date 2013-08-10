@@ -23,13 +23,19 @@ SPTY.Views.Slides = Backbone.View.extend({
     this.$el.children(':nth-child(n+2)').hide();
   },
 
+  scrollTop: function() {
+    setTimeout(function(){
+      window.scrollTo(0, 1);
+    }, 0);
+  },
+
   changeSlide: function(options) {
     var newSlide,
         slides = this.$el.children();
 
     if(options.slideIndex) {
+      this.scrollTop();
       this.currentSlideIndex = +options.slideIndex;
-
       newSlide = slides.eq(this.currentSlideIndex - 1);
 
       if(this.currentSlideIndex < 2) {

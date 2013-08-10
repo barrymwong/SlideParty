@@ -1,16 +1,10 @@
 var mongoose = require('mongoose'),
     _und = require('underscore'),
     json = require('./slides.json'),
-    db = 'slideparty',
-    domain = 'localhost',
-    collection = 'slides';
+    collection = 'slides',
+    dbEnv = process.env.MONGODB ? process.env.MONGODB : 'mongodb://localhost/slideparty';
 
-if(process.env.NODE_ENV === 'production') {
-  mongoose.connect('mongodb://nodejitsu:ab9ddee52584485c5730a5744caf7d90@dharma.mongohq.com:10065/nodejitsudb85789971');
-} else {
-  mongoose.connect('mongodb://' + domain + '/' + db);
-}
-
+mongoose.connect(dbEnv);
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 mongoose.connection.once('open', function() {

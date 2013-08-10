@@ -2,13 +2,14 @@ body, h1, h2, h3 { font-family: helvetica,arial,sans-serif; margin:0; padding:0;
 h1 { font-size: 40px; }
 body { overflow-y:scroll; overflow-x:hidden; }
 a {color: #0066CC;}
-h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; padding:10px 20px; text-align:center; }
+h1.title { font:36px Monda,sans-serif; padding:10px 20px; text-align:center; border-top:10px solid #f3f3f3;}
 .tal { text-align:left; }
 .tac { text-align:center; }
+.marker { background-color:yellow; }
 .slide { width:100%; background-color:#fff; display:none; padding-bottom:50px; }
 .slide ul li { list-style-type:disc; }
 .slide iframe.twitter-tweet { margin:10px auto !important; }
-.slide .content { text-align:center; font-size:24px; margin:20px; }
+.slide .content { text-align:center; font-size:30px; margin:20px; }
 .slide .content li { margin-left:20%; text-align:left; }
 .is-hijack #next,
 .is-hijack #prev { display:none !important; }
@@ -16,17 +17,19 @@ h1.title { font:30px 'Architects Daughter',sans-serif;background-color:#f3f3f3; 
 #next { right: 0px; background:url(../images/right.png) no-repeat 0 0; }
 #prev { left: 0px; background:url(../images/left.png) no-repeat 0 0; }
 .notice { font-size:14px; position:fixed; bottom:5px; left:5px; background-color:#f3f3f3; border-radius:3px; padding:5px;}
-.notice a.button {margin:0;}
+.notice a.button { margin:0; }
 .poll { position:fixed; top:0; right:0; padding:5px; }
 .poll button { margin: 0; font-size:20px ;}
-#page-home { padding-top:20px; font-size:20px;}
+#page-home { padding-top:20px; }
 #page-home header { text-align:center; }
 #page-home .content { text-align:left; }
+#page-home .columns p { font-size:26px; line-height:30px; color:#aaa; }
+#page-home .columns p .highlight { color:#666; }
 #page-home h1 { font:60px 'Architects Daughter',helvetica,sans-serif; color:#f05a28; }
 #page-home ol { text-align:left;}
 .logo { max-width:350px; }
 #page-home .buttons { position:fixed; top:5px; right:5px; font-size:16px;}
-#page-home .button-demo {font-size:30px;}
+#page-home .button-demo { font:36px Monda,helvetica,sans-serif; }
 #page-create {font-size:16px;}
 .page { border:1px solid #ccc; padding:10px; margin-bottom:10px; }
 h1[contenteditable=true], 
