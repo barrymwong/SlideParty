@@ -48,22 +48,26 @@ SPTY.Views.Slides = Backbone.View.extend({
 
       slides
         .filter(':visible')
-        .css('position', 'absolute')
+        .addClass('slide-out')
+        .css({position: 'absolute'})
         .animate({
           left: options.direction === 'next' ? '-100%' : '100%',
           opacity: 'hide'
         }, this.transitionSpeed, function() {
-          $(this).css({left: 0});
+          $(this).css({left: 0}).removeClass('slide-out');
         });
 
       newSlide
+        .addClass('slide-in')
         .css({
           position: 'absolute',
           left: options.direction === 'next' ? '100%' : '-100%'
         }).animate({
           left: 0,
           opacity: 'show'
-        }, this.transitionSpeed);
+        }, this.transitionSpeed, function() {
+          $(this).removeClass('slide-in');
+        });
 
       SPTY.mainRouter.navigate('/slides/' + this.currentSlideIndex);
 

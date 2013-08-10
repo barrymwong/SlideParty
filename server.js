@@ -25,7 +25,19 @@ Server.app.configure(function() {
   Server.app.use(Server.express.static(Server.path.join(__dirname + '/public')));
 });
 
+Server.getSlideData = function() {
+  Server.mongoose.Slide.find({}, function(err, slides) {
+    if(err) {
+      console.log(err);
+    }
+    Server.data.slideData = slides;
+  });
+  return Server.data.slideData;
+};
+
 Server.io.sockets.on('connection', function(socket) {
+  Server.getSlideData();
+
   var checkAuth = function(req, res, next) {
     if (!req.session.user_id) {
       res.redirect('/login');
@@ -33,17 +45,6 @@ Server.io.sockets.on('connection', function(socket) {
       next();
     }
   };
-
-  var getSlideData = function() {
-    Server.mongoose.Slide.find({}, function(err, slides) {
-      if(err) {
-        return err;
-      }
-      Server.data.slideData = slides;
-    });
-    return Server.data.slideData;
-  };
-  getSlideData();
 
   Server.app.get('/', function (req, res) {
     res.sendfile('./public/index.html');
@@ -56,7 +57,7 @@ Server.io.sockets.on('connection', function(socket) {
   Server.app.post('/create', checkAuth, function (req, res) {
     new Server.mongoose.Slide(req.body.create).save(function(err, slide) {
       if(err) {
-        return err;
+        console.log(err);
       }
       Server.io.sockets.emit('slideUpdateSuccess', slide);
     });
@@ -93,8 +94,7 @@ Server.io.sockets.on('connection', function(socket) {
   });      
 
   socket.on('initLoad', function(data) {
-    var getData = getSlideData();
-    data['slideData'] = getData;
+    data['slideData'] = Server.getSlideData();
     data['pollData'] = Server.data.pollData;
     data['isAdmin'] = Server.data.isAdmin;
     socket.emit('initSuccess', data);

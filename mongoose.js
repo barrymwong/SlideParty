@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     _und = require('underscore'),
     json = require('./slides.json'),
     collection = 'slides',
-    dbEnv = process.env.MONGODB ? process.env.MONGODB : 'mongodb://localhost/slideparty';
+    dbEnv = process.env.mongodb ? process.env.mongodb : 'mongodb://localhost/slideparty';
 
 mongoose.connect(dbEnv);
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));

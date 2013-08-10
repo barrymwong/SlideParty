@@ -1,4 +1,4 @@
-var SPTY = _.extend({
+var SPTY = {
   Models: {},
   Views: {},
   Collections: {},
@@ -8,6 +8,6 @@ var SPTY = _.extend({
     {title: 'SlideParty'}
   ],
   noHijack: true
-});
+};
 
 

@@ -37,23 +37,47 @@ div[contenteditable=true] { cursor:pointer; border:1px solid transparent; }
 h1[contenteditable=true]:hover, 
 div[contenteditable=true]:hover { border:1px dashed red; }
 
-.poll {
-  -webkit-animation: slidein 1s;
-  -moz-animation: slidein 1s;
-  animation: slidein 1s;
+.slide-in {
+
 }
 
-@-webkit-keyframes slidein {
+.poll {
+  -webkit-animation: poll 1s;
+  -moz-animation: poll 1s;
+  animation: poll 1s;
+}
+
+.slide-in,
+.slide-out {position:absolute;}
+
+.slide-in {
+  -webkit-animation: slide-in 0.5s;
+}
+
+.slide-out {
+  -webkit-animation: slide-out 0.5s;
+}
+
+@-webkit-keyframes poll {
   0% { margin-top: -100%; opacity: 0; }
   100% { margin-top: 0%; opacity: 1; }
 }
-@-moz-keyframes slidein {
+@-moz-keyframes poll {
   0% { margin-top: -100%; opacity: 0; }
   100% { margin-top: 0%; opacity: 1; }
 }
-@keyframes slidein {
+@keyframes poll {
   0% { margin-top: -100%; opacity: 0; }
   100% { margin-top: 0%; opacity: 1; }
+}
+
+@-webkit-keyframes slide-in {
+  0% { -webkit-filter: grayscale(1) blur(10px) }
+  100% { -webkit-filter: grayscale(0) blur(0px) }
+}
+@-webkit-keyframes slide-out {
+  0% { -webkit-filter: grayscale(0) blur(0px) }
+  100% { -webkit-filter: grayscale(1) blur(10px) }
 }
 
 @media screen and (max-width: 768px) {
@@ -62,15 +86,15 @@ div[contenteditable=true]:hover { border:1px dashed red; }
   .slide img { width:100%; height:auto; }
   .svg {width:100%;}
   .poll { bottom:0; top:inherit; }
-  @-webkit-keyframes slidein {
+  @-webkit-keyframes poll {
     0% { margin-bottom: -100%; opacity: 0; }
     100% { margin-bottom: 0%; opacity: 1; }
   }
-  @-moz-keyframes slidein {
+  @-moz-keyframes poll {
     0% { margin-bottom: -100%; opacity: 0; }
     100% { margin-bottom: 0%; opacity: 1; }
   }
-  @keyframes slidein {
+  @keyframes poll {
     0% { margin-bottom: -100%; opacity: 0; }
     100% { margin-bottom: 0%; opacity: 1; }
   }
