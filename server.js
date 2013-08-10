@@ -49,12 +49,12 @@ Server.io.sockets.on('connection', function(socket) {
     res.sendfile('./public/index.html');
   });
 
-  Server.app.get('/edit', checkAuth, function (req, res) {
-    res.sendfile('./public/edit.html');
+  Server.app.get('/create', checkAuth, function (req, res) {
+    res.sendfile('./public/create.html');
   });
 
-  Server.app.post('/edit', checkAuth, function (req, res) {
-    new Server.mongoose.Slide(req.body.edit).save(function(err, slide) {
+  Server.app.post('/create', checkAuth, function (req, res) {
+    new Server.mongoose.Slide(req.body.create).save(function(err, slide) {
       if(err) {
         return err;
       }
@@ -74,7 +74,7 @@ Server.io.sockets.on('connection', function(socket) {
       res.cookie('isAdmin', 1000);
       Server.data.isAdmin['isAdmin'] = 1000;
       if(post.login.nav === 'new') {
-        res.redirect('/edit');
+        res.redirect('/create');
       } else {
         res.redirect('/');
       }

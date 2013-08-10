@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -11,7 +10,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="format-detection" content="telephone=no">
 
-  <title>Edit SlideParty (BETA)</title>
+  <title>Create - SlideParty</title>
 
   <link href="http://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/skeleton/base.css">
@@ -19,31 +18,42 @@
   <link rel="stylesheet" href="css/skeleton/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="page-create">
   <div class="slides">
     <div class="slide" style="display:block">
-      <form method="post" action="/edit">
-        <h1 class="title" data-edit="data-title" id="edit-title" data-placeholder="(new slide title)" contenteditable="true">(new slide title)</h1>
-        <div data-edit="data-html" id="edit-html" data-placeholder="(edit content)" contenteditable="true">(edit content)</div>
-        <input id="data-title" name="edit[title]" type="hidden">
-        <input id="data-html" name="edit[html]" type="hidden">
+      <form method="post" action="/create">
         <div class="container">
-          <div class="sixteen columns tal">
-            <div id="page-edit" class="page">
-              <p>Modify text above to add a new slide to the presentation. (Note: Title is required. Delete content text to leave blank.)</p>
-              <p>Embed Youtube Code: <input name="edit[youtube]" placeholder="(optional)" type="text"></p>
-              <p>Embed Twitter Code: <input name="edit[tweet]" placeholder="(optional)" type="text"></p>
-              <p><label><input type="checkbox" name="edit[poll]" value="vote"> Display Like button</label></p>
+          <div class="sixteen columns">
+            <h1>Create New Slides</h1>
+            <p>Modify the text to add a new slide to the presentation. (Note: Title is required. Delete '[create content]' text to leave blank.)</p>
+            <div class="page">
+              <header>
+              <h1 class="title" data-create="data-title" id="create-title" data-placeholder="[new slide title]" contenteditable="true">[new slide title]</h1>
+              </header>
+              <div class="content">
+                <div data-create="data-html" id="create-html" data-placeholder="[create content]" contenteditable="true">[create content]</div>
+                <input id="data-title" name="create[title]" type="hidden">
+                <input id="data-html" name="create[html]" type="hidden">
+              </div>
+            </div>
+          </div>
+          <div class="sixteen columns tal alpha omega">
+            <div class="eight columns alpha">
+              <p>Embed Youtube Code: <input name="create[youtube]" placeholder="(optional)" type="text"></p>
+              <p>Embed Twitter Code: <input name="create[tweet]" placeholder="(optional)" type="text"></p>
+            </div>
+            <div class="eight columns omega">
+              <p><label><input type="checkbox" name="create[poll]" value="vote"> Display Like button</label></p>
               <p>
                 <button type="submit">Add new slide</button> 
                 <a href="/">Cancel</a>
               </p>
             </div>
           </div>
-        </div>
+        </div><!-- end .container -->
       </form>
     </div>
-  </div>
+  </div><!-- end .slides -->
   <script src="js/lib/jquery-2.0.3.min.js"></script>
   <script src="js/lib/underscore-1.5.1.min.js"></script>
   <script src="js/lib/backbone-1.0.0.min.js"></script>
@@ -53,5 +63,6 @@
   <script src="js/client.js"></script>
   <script src="js/editorConfig.js"></script>
   <script src="js/editor.js"></script>
+  <script>var spEdit = new SpEdit();</script>
 </body>
 </html>

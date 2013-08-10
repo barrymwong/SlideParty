@@ -4,21 +4,19 @@
       "home": true
     },
     {
-      "title": "Welcome to SlideParty (BETA)",
-      "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg"
+      "title": "Welcome to SlideParty",
+      "image": "http://cdn.grumpycats.com/wp-content/uploads/2013/04/IMG_2692-1-625x677.jpg",
+      "poll": "vote"
     },
     {
       "title": "Live slide presentation with your friends",
-      "image": "http://www.helpfil.com/wp-content/uploads/2012/08/Friends-TV-show-590x300.jpg"
+      "image": "http://www.helpfil.com/wp-content/uploads/2012/08/Friends-TV-show-590x300.jpg",
+      "poll" : "vote"
     },
     {
       "title": "Control slides remotely with other devices",
-      "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg"
-    },
-    {
-      "title": "Thank You", 
-      "image": "http://farm1.staticflickr.com/165/396771291_aea2cf831e.jpg",
-      "poll": "vote"
-    }
+      "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg",
+      "poll" : "vote"
+    } 
   ] 
 }

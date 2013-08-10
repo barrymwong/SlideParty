@@ -59,8 +59,8 @@ SPTY.Views.Slide = Backbone.View.extend({
       var loc = location.href;
       var address = loc.split('/');
       this.$el.attr('data-slide', this.cid).append(
-        '<p>Share Slide: <a href="' + loc + '">'+ address[2] +'</a> | ' +
-        '<a href="/login">Login</a></p>'
+        '<div class="content"><p>Share Slide: <a href="' + loc + '">'+ address[2] +'</a> | ' +
+        '<a href="/login">Login</a></p></div>'
       );
     }
     return this;
@@ -68,21 +68,21 @@ SPTY.Views.Slide = Backbone.View.extend({
 
   renderHTML: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<div>' + this.model.get('html') + '</div>'
+      '<div class="content">' + this.model.get('html') + '</div>'
     );
     return this;
   },
 
   renderTextTop: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<p>' + this.model.get('textTop') + '</p>'
+      '<div class="content"><p>' + this.model.get('textTop') + '</p></div>'
     );
     return this;
   },
 
   renderTextBottom: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<p>' + this.model.get('textBottom') + '</p>'
+      '<div class="content"><p>' + this.model.get('textBottom') + '</p></div>'
     );
     return this;
   },
@@ -103,14 +103,14 @@ SPTY.Views.Slide = Backbone.View.extend({
 
   renderImage: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<img src="' + this.model.get('image') + '">'
+      '<div class="content"><img src="' + this.model.get('image') + '"></div>'
     );
     return this;
   },
 
   renderD3: function() {
     this.$el.attr('data-slide', this.cid).append(
-      '<div class="' + this.model.get('d3') + '"></div>' +
+      '<div class="content"><div class="' + this.model.get('d3') + '"></div></div>' +
       '<script src="js/d3/' + this.model.get('d3') + '.js"></script>'
     );
     return this;
@@ -118,14 +118,14 @@ SPTY.Views.Slide = Backbone.View.extend({
 
   renderYoutube: function() {
     this.$el.attr('data-slide', this.cid).append(
-      this.model.get('youtube')
+      '<div class="content">' + this.model.get('youtube') + '</div>'
     );
     return this;
   },
 
   renderTweet: function() {
     this.$el.attr('data-slide', this.cid).append(
-      this.model.get('tweet')
+      '<div class="content">' + this.model.get('tweet') + '</div>'
     );
     return this;
   }

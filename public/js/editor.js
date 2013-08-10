@@ -1,33 +1,37 @@
-(function() {
-  var defaultTitle = $('#edit-title').html();
-  var defaultHtml = $('#edit-html').html();
+var SpEdit = function() {
+  this.$defaultTitle = $('#create-title').html();
+  this.$defaultHtml = $('#create-html').html();
+  this.$contEdit = $('[contenteditable=true]');
+  this.doPost();
+};
 
-  var success = function(data) {
-    var loc = location.href.split('/edit');
-    location.href = loc[0];
-  };
+SpEdit.prototype.success = function() {
+  var loc = location.href.split('/create');
+  location.href = loc[0];
+};
 
-  var $contEdit = $('[contenteditable=true]');
+SpEdit.prototype.copyToHidden = function() {
+  var that = this;
+  this.$contEdit.each(function(index) {
+    var $item = that.$contEdit.eq(index);
+    $('#' + $item.data('create')).val($item.html());
+  });
+};
 
-  var copyToHidden = function() {
-    $contEdit.each(function(index) {
-      var $item = $contEdit.eq(index);
-      $('#' + $item.data('edit')).val($item.html());
-    });
-  };
-
+SpEdit.prototype.doPost = function() {
+  var that = this;
   $('form').on('submit', function(e) {
     e.preventDefault();
-    copyToHidden();
+    that.copyToHidden();
 
-    if(defaultTitle !== $('#data-title').val() && defaultHtml !== $('#data-html').val()) {
+    if(that.$defaultTitle !== $('#data-title').val() && that.$defaultHtml !== $('#data-html').val()) {
       $.ajax({
         type: 'POST',
-        url: '/edit',
+        url: '/create',
         data: $(this).serialize(),
         dataType: 'text',
-        success: success
+        success: that.success
       });
     }
   });
-}());
+};

@@ -14,7 +14,6 @@ if(process.env.NODE_ENV === 'production') {
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 mongoose.connection.once('open', function() {
-  console.log("MY DB Connected with Mongoose");
   slideSchema = new mongoose.Schema({
     sortID: Number,
     image: String,

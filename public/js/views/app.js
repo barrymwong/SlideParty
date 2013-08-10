@@ -45,10 +45,10 @@ SPTY.Views.App = Backbone.View.extend({
   doNotHijack: function(data) {
     SPTY.noHijack = data.noHijack;
     if(this.adminCheck()) {
-      $('.notice').html('Presenter | <a href="/edit">New Slide</a> | <a href="/logout">Logout</a>');
+      $('.notice').html('Presenter | <a href="/create">New Slide</a> | <a href="/logout">Logout</a>');
       $('body').removeClass('is-hijack');
     } else if (SPTY.noHijack === true) {
-      $('.notice').html('<a href="/login">Presenter Login</a>');
+      $('.notice').html('<a href="/login" class="button">Presenter Login</a>');
       $('body').removeClass('is-hijack');
     } else {
       $('.notice').html('Live Presentation Mode: On');

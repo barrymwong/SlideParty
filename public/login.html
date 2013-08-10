@@ -4,7 +4,6 @@
   <title>Login</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -20,21 +19,26 @@
   <link rel="stylesheet" href="css/skeleton/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="page-login">
   <div class="container">
-    <div class="page sixteen columns alpha omega">
-      <form method="POST" action="login/">
-        <p>Note: SlideParty is a demo. You cannot create a new account.</p>
-        <p>Presenter Login:</p>
-        <input id="username" name="login[username]" type="text" placeholder="Username" value="admin">
-        <input id="password" name="login[password]" type="password" placeholder="Password" value="1234">
-        <select id="nav" name="login[nav]">
-          <optgroup label="Go to page:">
-            <option value="slides">Slides</option>
-            <option value="new">Create new slide</option>
-          <optgroup>
-        </select>
-        <button type="submit">Submit</button>
+    <div class="sixteen columns alpha omega">
+      <h1>Presenter Login</h1>
+      <div class="eight columns alpha">
+        <form class="page" method="POST" action="login/">
+          <input id="username" name="login[username]" type="text" placeholder="Username" value="admin">
+          <input id="password" name="login[password]" type="password" placeholder="Password" value="1234">
+          <select id="nav" name="login[nav]">
+            <optgroup label="Go to page:">
+              <option value="slides">Slides</option>
+              <option value="new">Create new slide</option>
+            <optgroup>
+          </select>
+          <button type="submit">Submit</button>
+          <a href="/">Cancel</a>
+        </div>
+        <div class="eight columns omega tac">
+          <img class="logo" src="images/slideparty.png">
+        </div>
       </form>
     </div>
   </div>

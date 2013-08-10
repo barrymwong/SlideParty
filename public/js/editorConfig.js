@@ -32,8 +32,8 @@ var configHtml = {
 };
 
 try {
-  CKEDITOR.inline( 'edit-title', configTitle );
-  CKEDITOR.inline( 'edit-html', configHtml );
+  CKEDITOR.inline( 'create-title', configTitle );
+  CKEDITOR.inline( 'create-html', configHtml );
 } catch(e) {
   console.log('hello');
 }
