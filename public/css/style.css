@@ -37,10 +37,6 @@ div[contenteditable=true] { cursor:pointer; border:1px solid transparent; }
 h1[contenteditable=true]:hover, 
 div[contenteditable=true]:hover { border:1px dashed red; }
 
-.slide-in {
-
-}
-
 .poll {
   -webkit-animation: poll 2s;
   -moz-animation: poll 2s;
@@ -49,11 +45,9 @@ div[contenteditable=true]:hover { border:1px dashed red; }
 
 .slide-in,
 .slide-out { position:absolute; }
-
 .slide-in {
   -webkit-animation: slide-in 0.5s;
 }
-
 .slide-out {
   -webkit-animation: slide-out 0.5s;
 }
