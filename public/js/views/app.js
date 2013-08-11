@@ -3,6 +3,7 @@ SPTY.Views.App = Backbone.View.extend({
 
   initialize: function() {
     this.isTouchDevice();
+    this.touchWipe();
     SPTY.Events.on('appInit', this.appInit, this);
     SPTY.Events.on('hijack', this.doNotHijack, this);
     SPTY.socket.emit('initLoad', {});
@@ -39,6 +40,7 @@ SPTY.Views.App = Backbone.View.extend({
     twttr.widgets.load(); 
   },
 
+
   isTouchDevice: function() {
     var isTouch = !!('ontouchstart' in window) || !!('onmsgesturechange' in window);
     if(isTouch) {
@@ -55,15 +57,35 @@ SPTY.Views.App = Backbone.View.extend({
   doNotHijack: function(data) {
     SPTY.noHijack = data.noHijack;
     if(this.adminCheck()) {
-      $('.notice').html('Presenter | <a href="/create">New Slide</a> | <a href="/logout">Logout</a>');
+      $('.notice').html('<div class="panel"><strong>Presenter: On</strong> | <a href="/create">Create</a> | <a href="/logout">Logout</a></div>');
       $('body').removeClass('is-hijack');
     } else if (SPTY.noHijack === true) {
       $('.notice').html('<a href="/login" class="button">Presenter Login</a>');
       $('body').removeClass('is-hijack');
     } else {
-      $('.notice').html('Live Presentation Mode: On');
+      $('.notice').html('<div class="panel"><strong>Live Presentation Mode: On</strong></div>');
       $('body').addClass('is-hijack');
     }
+  },
+
+  touchWipe: function() {
+    if(!this.adminCheck() && SPTY.noHijack === false) {
+      return false;
+    }
+    $('body').touchwipe({
+      wipeLeft: function() { 
+        SPTY.Events.trigger('changeSlide', {
+          direction: 'next'
+        });
+      },
+      wipeRight: function() { 
+        SPTY.Events.trigger('changeSlide', {
+          direction: 'prev'
+        });
+      },
+      min_move_x: 20,
+      preventDefaultEvents: false
+    });
   },
 
   keyUp: function(event) {

@@ -6,7 +6,7 @@ h1.title { font:36px Monda,sans-serif; padding:10px 20px; text-align:center; }
 .tal { text-align:left; }
 .tac { text-align:center; }
 .marker { background-color:yellow; }
-.slide { width:100%; background-color:#fff; display:none; padding-bottom:50px; border-top:10px solid #f3f3f3; }
+.slide { width:100%; background-color:#fff; display:none; padding-bottom:50px; border-top:10px solid #f3f3f3; min-height:600px; }
 .slide ul li { list-style-type:disc; }
 .slide iframe.twitter-tweet { margin:10px auto !important; }
 .slide .content { text-align:center; font-size:30px; margin:20px; }
@@ -16,7 +16,9 @@ h1.title { font:36px Monda,sans-serif; padding:10px 20px; text-align:center; }
 #next, #prev { position:fixed; top:45%; width:42px; height:100px; opacity:0.5; }
 #next { right: 0px; background:url(../images/right.png) no-repeat 0 0; }
 #prev { left: 0px; background:url(../images/left.png) no-repeat 0 0; }
-.notice { font-size:14px; position:fixed; bottom:5px; left:5px; background-color:#f3f3f3; border-radius:3px; padding:5px;}
+.notice { font-size:14px; position:fixed; bottom:5px; left:5px; }
+.notice .panel { background-color:#f3f3f3; border-radius:3px; padding:5px; }
+.notice .panel strong { color:#39b54a; }
 .notice a.button { margin:0; }
 .poll { position:fixed; top:0; right:0; padding:5px; }
 .poll button { margin: 0; font-size:20px ;}
@@ -44,16 +46,16 @@ div[contenteditable=true]:hover { border:1px dashed red; }
 }
 
 @-webkit-keyframes poll {
-  0% { margin-top: -100%; opacity: 0; }
-  100% { margin-top: 0%; opacity: 1; }
+  0% { margin-top: -100%; }
+  100% { margin-top: 0%; }
 }
 @-moz-keyframes poll {
-  0% { margin-top: -100%; opacity: 0; }
-  100% { margin-top: 0%; opacity: 1; }
+  0% { margin-top: -100%; }
+  100% { margin-top: 0%; }
 }
 @keyframes poll {
-  0% { margin-top: -100%; opacity: 0; }
-  100% { margin-top: 0%; opacity: 1; }
+  0% { margin-top: -100%; }
+  100% { margin-top: 0%; }
 }
 
 .slide-in,
