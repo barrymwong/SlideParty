@@ -3,3 +3,13 @@ A slide presentation you can share with other devices. Use your own device to co
 http://slideparty.jit.su
 
 ![alt tag](https://raw.github.com/barrymwong/SlideParty/master/public/images/slideparty_sm.png)
+
+##Tech Stack
+*jQuery
+*Backbone.js
+*Skeleton
+*Node.js
+*Express
+*Socket.io
+*MongoDB
+*Mongoose
