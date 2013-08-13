@@ -9,14 +9,24 @@
       "poll": "vote"
     },
     {
-      "title": "Live slide presentation with your friends",
-      "image": "http://www.helpfil.com/wp-content/uploads/2012/08/Friends-TV-show-590x300.jpg",
+      "title": "Make your own slides",
+      "image": "http://assets.diylol.com/hfs/0cb/8ee/906/resized/chemistry-cat-meme-generator-i-have-no-idea-what-the-fuck-i-am-doing-224d3e.jpg",
+      "poll" : "vote"
+    }, 
+    {
+      "title": "Share slides with your friends",
+      "image": "http://themetapicture.com/media/funny-studying-with-friends.jpg",
       "poll" : "vote"
     },
     {
       "title": "Control slides remotely to other devices",
-      "image": "http://ratti-report.com/wp-content/uploads/2012/05/new-business-cloud-computing-diagram-small.jpg",
+      "image": "http://www.stuffistumbledupon.com/wp-content/uploads/2013/01/Cat-meme-cats-funny-pictures-blog-remote-control.jpg",
       "poll" : "vote"
-    } 
+    },
+    {
+      "title": "It's Easy!",
+      "image": "http://assets.diylol.com/hfs/67f/e17/571/resized/easy-mkay-meme-generator-it-s-easy-mkay-e60ce3.jpg",
+      "poll" : "vote"
+    }
   ] 
 }

@@ -101,7 +101,7 @@ SPTY.Views.Slides = Backbone.View.extend({
   renderSingle: function(data) {
     SPTY.slides.push(data);
     var slideView = new SPTY.Views.Slide({
-      model: new SlideModel(data)
+      model: new SPTY.Models.Slide(data)
     });
     this.$el.append(slideView.render().el);
   },
