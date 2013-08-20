@@ -87,14 +87,7 @@ SPTY.Views.Slides = Backbone.View.extend({
 
     // client sends to server
     if(slideIndex > 0 && slideIndex <= SPTY.slides.length && slideIndex !== lastSlide) {
-      if(!this.adminCheck() && SPTY.noHijack === true) {
-        SPTY.Events.trigger('changeSlide', {
-          slideIndex: slideIndex,
-          direction: dir
-        });
-      } else {
-        SPTY.socket.emit('direction', {direction: dir, slideIndex: slideIndex});
-      }
+      SPTY.socket.emit('direction', {direction: dir, slideIndex: slideIndex});
     }
   },
 
@@ -114,6 +107,6 @@ SPTY.Views.Slides = Backbone.View.extend({
       this.$el.append(slideView.render().el);
     }, this);
 
-    return this;      
+    return this;
   }
 });
